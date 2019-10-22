@@ -3,6 +3,7 @@ import re
 import sys
 from scripts.WordList import WordList
 
+
 class WordListReader:
 
     CHARACTER_SET_PATTERN = r"([a-z]+)"
