@@ -1,3 +1,4 @@
+import re
 from Levenshtein import distance
 
 
@@ -7,6 +8,9 @@ class WordListValidator:
     MAX_WORD_LENGTH = 8
     NO_OF_WORDS = 2048
     MIN_LEVENSHTEIN_DISTANCE = 2
+
+    FILE_NAME_MAX_LENGTH = 255
+    FILE_NAME_NUMBER_OF_SEGMENTS_MAX = 3
 
     character_sets = None
     word_list = None
@@ -18,7 +22,8 @@ class WordListValidator:
     def validate(self):
         is_word_list_valid = False
 
-        # todo: add (either here or in WordListReader) word list file name validation (i.e. hash validation)
+        if not self.check(self.is_file_name_valid, "file name"):
+            is_word_list_valid = False
 
         if not self.check(self.is_character_set_valid, "character set"):
             is_word_list_valid = False
@@ -53,6 +58,31 @@ class WordListValidator:
         else:
             print("[-] {}".format(message))
             return False
+
+    def is_file_name_valid(self):
+        FILE_NAME_PATTERN = r"^(\w+)-([0-9abcdef]{8}\b)(-\w+)?(-\w+)?"
+
+        expected_file_hash = list(self.word_list.file_hash_info.keys())[0]
+        file_name = list(self.word_list.file_hash_info.values())[0]
+
+        if len(file_name) > WordListValidator.FILE_NAME_MAX_LENGTH:
+            return False
+
+        result = re.match(FILE_NAME_PATTERN, file_name)
+        if result is None:
+            return False
+
+        if result.group(self.FILE_NAME_NUMBER_OF_SEGMENTS_MAX + 1) is not None:
+            return False
+
+        file_hash = result.group(2)
+        if file_hash is None:
+            return False
+
+        if file_hash != expected_file_hash:
+            return False
+
+        return True
 
     def is_character_set_valid(self):
         character_set = self.get_character_set()

@@ -6,24 +6,29 @@ from scripts.WordList import WordList
 
 class TestWordListReader(unittest.TestCase):
 
+    SAMPLE_WORD_LIST = "sample_word_list"
+
     def test_correct_validate_file_exists(self):
-        EXISTING_PATH = "./sample_word_list"
-        WordListReader().validate_file_exists(EXISTING_PATH)
+        WordListReader().validate_file_exists(self.SAMPLE_WORD_LIST)
 
     def test_incorrect_validate_file_exists(self):
-        NON_EXISTING_PATH = "./non_existing_word_list"
+        NON_EXISTING_WORD_LIST = "non_existing_word_list"
         with self.assertRaises(SystemExit):
-            WordListReader().validate_file_exists(NON_EXISTING_PATH)
+            WordListReader().validate_file_exists(NON_EXISTING_WORD_LIST)
+
+    def test_get_file_hash_info(self):
+        expected_file_hash_info = {"d2c6bf4f": self.SAMPLE_WORD_LIST}
+        file_hash_info = WordListReader().get_file_hash_info(self.SAMPLE_WORD_LIST)
+        self.assertEqual(file_hash_info, expected_file_hash_info)
 
     def test_read_file(self):
-        SAMPLE_WORD_LIST = "./sample_word_list"
         expected_lines = [
             "[english+ą:a+ć:c+ę:e+ł:l+ń:n+ó:o+ś:s+ź:z+ż:z]\n",
             "awokado\n",
             "banan\n",
             "tygrys\n"
         ]
-        lines = WordListReader().read_file(SAMPLE_WORD_LIST)
+        lines = WordListReader().read_file(self.SAMPLE_WORD_LIST)
         self.assertListEqual(expected_lines, lines)
 
     correct_scenarios_first_line = [
@@ -87,9 +92,9 @@ class TestWordListReader(unittest.TestCase):
     def test_parse_file(self):
         EXPECTED_WORD_LIST = WordList("english",
                                       {'ą':'a', 'ć':'c', 'ę':'e', 'ł':'l', 'ń':'n', 'ó':'o', 'ś':'s', 'ź':'z', 'ż':'z'},
-                                      ["awokado", "banan", "tygrys"])
-        SAMPLE_WORD_LIST = "./sample_word_list"
-        word_list = WordListReader().parse_file(SAMPLE_WORD_LIST)
+                                      ["awokado", "banan", "tygrys"],
+                                      {"d2c6bf4f": self.SAMPLE_WORD_LIST})
+        word_list = WordListReader().parse_file(self.SAMPLE_WORD_LIST)
         self.assertEqual(EXPECTED_WORD_LIST, word_list)
 
 if __name__ == '__main__':
