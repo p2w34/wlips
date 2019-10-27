@@ -1,8 +1,8 @@
 # This Python file uses the following encoding: utf-8
 import unittest
 
-from scripts.WordListReader import WordListReader
-from scripts.WordList import WordList
+from scripts.src.WordListReader import WordListReader
+from scripts.src.WordList import WordList
 
 class TestWordListReader(unittest.TestCase):
 

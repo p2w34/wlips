@@ -2,7 +2,7 @@ import hashlib
 import os
 import re
 import sys
-from scripts.WordList import WordList
+from scripts.src.WordList import WordList
 
 
 class WordListReader:
