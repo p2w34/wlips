@@ -7,16 +7,22 @@ from scripts.src.WordList import WordList
 
 class WordListReader:
 
-    CHARACTER_SET_PATTERN = r"([a-z]+)"
-    MAPPINGS_PATTERN = r"((\+\w:\w)+)*"
+    BASE_CHARACTER_SET_PATTERN = r"([a-z]+)"
+    REDUNDANT_CHARACTER_SET_PATTERN = r"(-[a-z]+)?"
+    EXTRA_CHARACTER_SET_PATTERN = r"((\+\w:\w)+)*"
 
     def parse_file(self, file_path):
         self.validate_file_exists(file_path)
         file_hash_info = self.get_file_hash_info(file_path)
         lines = self.read_file(file_path)
-        character_set, mappings = self.parse_first_line(lines[0])
+        base_character_set, redundant_character_set, extra_character_set = self.parse_first_line(lines[0])
         word_list = self.parse_word_list(lines)
-        return WordList(character_set, mappings, word_list, file_hash_info)
+        character_set = {
+            WordList.BASE_CHARACTER_SET: base_character_set,
+            WordList.REDUNDANT_CHARACTER_SET: redundant_character_set,
+            WordList.EXTRA_CHARACTER_SET: extra_character_set
+        }
+        return WordList(character_set, word_list, file_hash_info)
 
     def validate_file_exists(self, file_path):
         if not os.path.isfile(file_path):
@@ -38,7 +44,9 @@ class WordListReader:
             return lines
 
     def parse_first_line(self, line):
-        regex = r"^\[{}{}\]$".format(self.CHARACTER_SET_PATTERN, self.MAPPINGS_PATTERN)
+        regex = r"^\[{}{}{}\]$".format(self.BASE_CHARACTER_SET_PATTERN,
+                                       self.REDUNDANT_CHARACTER_SET_PATTERN,
+                                       self.EXTRA_CHARACTER_SET_PATTERN)
         result = re.match(regex, line)
         if result is None:
             raise Exception("invalid first line syntax")
@@ -47,12 +55,16 @@ class WordListReader:
         if character_set is None:
             raise Exception("invalid first line syntax")
 
-        if result.group(2) is None:
-            return character_set, {}
+        redundant_characters_set = []
+        if result.group(2) is not None:
+            redundant_characters_set = list(result.group(2)[1:])
 
-        mappings_candidates = result.group(2).split('+')[1:]
-        mappings = dict(zip([k[0] for k in mappings_candidates], [v[2] for v in mappings_candidates]))
-        return character_set, mappings
+        mappings = {}
+        if result.group(3) is not None:
+            mappings_candidates = result.group(3).split('+')[1:]
+            mappings = dict(zip([k[0] for k in mappings_candidates], [v[2] for v in mappings_candidates]))
+
+        return character_set, redundant_characters_set, mappings
 
     def parse_word_list(self, lines):
         for line in lines:

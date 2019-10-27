@@ -15,7 +15,7 @@ parser.add_argument('-f', '--file', required=True)
 args = parser.parse_args()
 file_name = args.file
 
-character_sets = CharacterSetsReader().parse(CHARACTER_SETS_PATH)
+base_character_sets = CharacterSetsReader().parse(CHARACTER_SETS_PATH)
 word_list_reader = WordListReader()
 try:
     word_list = word_list_reader.parse_file(file_name)
@@ -23,7 +23,7 @@ except:
     print("error: unable to parse word list file: '{}'".format(file_name))
     sys.exit(1)
 
-is_valid_word_list = WordListValidator(character_sets, word_list).validate()
+is_valid_word_list = WordListValidator(base_character_sets, word_list).validate()
 
 if not is_valid_word_list:
     print()

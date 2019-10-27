@@ -1,6 +1,6 @@
 import re
 from Levenshtein import distance
-
+from scripts.src.WordList import WordList
 
 class WordListValidator:
 
@@ -12,11 +12,11 @@ class WordListValidator:
     FILE_NAME_MAX_LENGTH = 255
     FILE_NAME_NUMBER_OF_SEGMENTS_MAX = 3
 
-    character_sets = None
+    base_character_sets = None
     word_list = None
 
-    def __init__(self, character_sets, word_list):
-        self.character_sets = character_sets
+    def __init__(self, base_character_sets, word_list):
+        self.base_character_sets = base_character_sets
         self.word_list = word_list
 
     def validate(self):
@@ -145,15 +145,22 @@ class WordListValidator:
 
     def get_character_set(self):
         character_set = []
-        if not self.word_list.mappings:
-            character_set = self.character_sets[self.word_list.base_character_set]
+        base_character_set = self.word_list.character_set[WordList.BASE_CHARACTER_SET]
+        redundant_character_set = self.word_list.character_set[WordList.REDUNDANT_CHARACTER_SET]
+        extra_character_set = self.word_list.character_set[WordList.EXTRA_CHARACTER_SET]
+
+        if not extra_character_set:
+            character_set = self.base_character_sets[base_character_set]
         else:
-            character_set = self.character_sets[self.word_list.base_character_set] + [k for k in self.word_list.mappings.keys()]
+            character_set = self.base_character_sets[base_character_set] + [k for k in extra_character_set.keys()]
+
+        for c in redundant_character_set:
+            character_set.remove(c)
 
         return character_set
 
     def map_word(self, word):
-        mappings = self.word_list.mappings
+        mappings = self.word_list.character_set[WordList.EXTRA_CHARACTER_SET]
         if not mappings:
             return word
 
