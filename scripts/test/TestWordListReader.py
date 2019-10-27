@@ -17,13 +17,13 @@ class TestWordListReader(unittest.TestCase):
             WordListReader().validate_file_exists(NON_EXISTING_WORD_LIST)
 
     def test_get_file_hash_info(self):
-        expected_file_hash_info = {"d2c6bf4f": self.SAMPLE_WORD_LIST}
+        expected_file_hash_info = {"3b784e25": self.SAMPLE_WORD_LIST}
         file_hash_info = WordListReader().get_file_hash_info(self.SAMPLE_WORD_LIST)
         self.assertEqual(file_hash_info, expected_file_hash_info)
 
     def test_read_file(self):
         expected_lines = [
-            "[english+ą:a+ć:c+ę:e+ł:l+ń:n+ó:o+ś:s+ź:z+ż:z]\n",
+            "[english-qvx+ą:a+ć:c+ę:e+ł:l+ń:n+ó:o+ś:s+ź:z+ż:z]\n",
             "awokado\n",
             "banan\n",
             "tygrys\n"
@@ -32,17 +32,29 @@ class TestWordListReader(unittest.TestCase):
         self.assertListEqual(expected_lines, lines)
 
     correct_scenarios_first_line = [
-        ("[english]", "english", {}),
-        ("[english+ą:a]", "english", {"ą":"a"}),
-        ("[english+ą:a+ć:c]", "english", {"ą":"a", "ć":"c"}),
-        ("[english+ą:a+ć:c+ę:e]", "english", {"ą":"a", "ć":"c", "ę":"e"})
+        ("[english]", "english", [], {}),
+        ("[english+ą:a]", "english", [], {"ą":"a"}),
+        ("[english-q]", "english", ['q'], {}),
+        ("[english-qv]", "english", ['q', 'v'], {}),
+        ("[english-qvx]", "english", ['q', 'v', 'x'], {}),
+        ("[english-qvx+ą:a]", "english", ['q', 'v', 'x'], {"ą":"a"}),
+        ("[english-qvx+ą:a+ć:c]", "english", ['q', 'v', 'x'], {"ą":"a", "ć":"c"}),
+        ("[english-qvx+ą:a+ć:c+ę:e]", "english", ['q', 'v', 'x'], {"ą":"a", "ć":"c", "ę":"e"})
     ]
     def test_correct_first_line_syntax(self):
-        for input_line, expected_character_set, expected_mappings in self.correct_scenarios_first_line:
+        for input_line,\
+            expected_base_character_set,\
+            expected_redundant_character_set,\
+            expected_extra_character_set \
+            in self.correct_scenarios_first_line:
             with self.subTest():
-                character_set, mappings = WordListReader().parse_first_line(input_line)
-                self.assertEqual(expected_character_set, character_set)
-                self.assertEqual(expected_mappings, mappings)
+                base_character_set,\
+                redundant_character_set,\
+                extra_character_set = WordListReader().parse_first_line(input_line)
+
+                self.assertEqual(expected_base_character_set, base_character_set)
+                self.assertListEqual(expected_redundant_character_set, redundant_character_set)
+                self.assertEqual(expected_extra_character_set, extra_character_set)
 
     incorrect_scenarios_first_line = [
         'english',
@@ -50,10 +62,14 @@ class TestWordListReader(unittest.TestCase):
         'english]',
         'english+',
         '[english+]',
+        '[english-]',
         'a[english]',
         '[english]a',
         '[english+ą|a]',
+        '[english-q-]',
+        '[english-q-v]',
         '[english+ą:+ć:c]',
+        '[english+ą:a-q]',
         '[english:ą:a+ć:c+ę:e]',
         '[english+ą:aa]'
     ]
@@ -90,10 +106,14 @@ class TestWordListReader(unittest.TestCase):
                                   lines)
 
     def test_parse_file(self):
-        EXPECTED_WORD_LIST = WordList("english",
-                                      {'ą':'a', 'ć':'c', 'ę':'e', 'ł':'l', 'ń':'n', 'ó':'o', 'ś':'s', 'ź':'z', 'ż':'z'},
+        character_set = {
+            WordList.BASE_CHARACTER_SET: "english",
+            WordList.REDUNDANT_CHARACTER_SET: ['q','v','x'],
+            WordList.EXTRA_CHARACTER_SET: {'ą':'a', 'ć':'c', 'ę':'e', 'ł':'l', 'ń':'n', 'ó':'o', 'ś':'s', 'ź':'z', 'ż':'z'},
+        }
+        EXPECTED_WORD_LIST = WordList(character_set,
                                       ["awokado", "banan", "tygrys"],
-                                      {"d2c6bf4f": self.SAMPLE_WORD_LIST})
+                                      {"3b784e25": self.SAMPLE_WORD_LIST})
         word_list = WordListReader().parse_file(self.SAMPLE_WORD_LIST)
         self.assertEqual(EXPECTED_WORD_LIST, word_list)
 
