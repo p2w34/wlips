@@ -1,9 +1,9 @@
 import argparse
 import sys
 
-from scripts.WordListReader import WordListReader
-from scripts.WordListValidator import WordListValidator
-from scripts.CharacterSetsReader import CharacterSetsReader
+from scripts.src.WordListReader import WordListReader
+from scripts.src.WordListValidator import WordListValidator
+from scripts.src.CharacterSetsReader import CharacterSetsReader
 
 CHARACTER_SETS_PATH = "../wlip-0001/character-sets/"
 
