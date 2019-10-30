@@ -1,5 +1,7 @@
 # Word Lists Improvement Proposals
 
+Contributions are very much welcome - please check [Contributors FAQ](contributors-faq.md).
+
 ## Abstract
 Aim of this work is to create [BIP0039](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) word lists
 for various languages.
