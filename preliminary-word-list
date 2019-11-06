@@ -1,7 +1,10 @@
-# Let's first add here a few thousands, without paying attention to their length.
-# Add common nouns and adjectives known to everyone.
-# Hopefully grouping them by category will help; Let's keep order (may be simply alphabetical) within each such group.
-# Feel free to add more groups.
+# Let's first add here ~5k words:
+#   - length does not matter here - a word might be too long for English list, but it might be appropriate for other lists,
+#   - common nouns and adjectives known to everyone, without using US or GB specific words,
+#   - it does not matter that some words might be less known in some of the countries (for example animals or fruits),
+#   - hopefully grouping them by category will help; let's keep order (may be simply alphabetical) within each such group;
+#     feel free to add more groups.
+#
 
 # group: food/eating
 pasta
