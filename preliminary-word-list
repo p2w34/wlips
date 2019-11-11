@@ -401,8 +401,55 @@ translator
 writer
 
 # group: sport
-football
+archery
+athletics
+badminton
+baseball
+basketball
+bowling
+boxing
+canoe
 chess
+climbing
+cricket
+curling
+cycling
+diving
+fencing
+fishing
+fitness
+football
+golf
+gymnastics
+handball
+hang gliding
+hockey
+judo
+jumping
+paragliding
+polo
+rowing
+rugby
+running
+sailing
+scuba diving
+shooting
+skateboarding
+skating
+skiing
+snorkeling
+snowboarding
+softball
+sport
+squash
+surfing
+swimming
+table tennis
+tennis
+triathlon
+volleyball
+weightlifting
+wrestling
 
 # group: days/months/time
 monday
