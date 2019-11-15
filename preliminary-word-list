@@ -43,7 +43,6 @@ grain
 hazelnut
 herb
 honey
-hot
 hunger
 jug
 juice
@@ -54,7 +53,6 @@ loaf
 lollipop
 lunch
 meat
-melon
 menu
 meringue
 milk
@@ -309,7 +307,6 @@ dog
 dolphin
 elephant
 elk
-fish
 fox
 frog
 giraffe
@@ -428,7 +425,6 @@ peony
 poppy
 rose
 snowdrop
-sunflower
 tulip
 
 # group: trees
@@ -485,7 +481,6 @@ swamp
 tree
 valley
 volcano
-water
 waterfall
 
 # group: weather
@@ -501,7 +496,6 @@ degree
 dew
 drizzle
 drought
-dry
 flood
 fog
 forecast
