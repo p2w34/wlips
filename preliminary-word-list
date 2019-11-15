@@ -7,8 +7,103 @@
 #
 
 # group: food/eating
-pasta
+bacon
+barley
+basil
+beef
+biscuit
+bowl
+bread
+breakfast
+buckwheat
+butter
+cake
+candy
+cheese
+chef
+chives
+cinnamon
+cook
+cream
+cuisine
+cup
+dessert
+diet
+dinner
+doughnut
+drink
+dry
+egg
+fish
 fork
+garlic
+ginger
+glass
+grain
+hazelnut
+herb
+honey
+hunger
+jug
+juice
+jum
+knife
+lemonade
+loaf
+lollipop
+lunch
+meat
+menu
+meringue
+milk
+muffin
+mug
+mustard
+napkin
+nectar
+nut
+olive
+omelet
+order
+oregano
+oven
+pan
+parsley
+pasta
+pepper
+plate
+pork
+pot
+raisin
+recipe
+restaurant
+rice
+rosemary
+salt
+sandwich
+sauce
+sausage
+seed
+snack
+soda
+soup
+spicy
+spoon
+steak
+stove
+straw
+sugar
+sunflower
+sweet
+syrup
+tea
+tumbler
+vanilla
+vitamin
+walnut
+water
+wheat
+yogurt
 
 # group: parts of the body
 abdomen
@@ -131,9 +226,6 @@ happy
 humor
 
 # group: fruits and vegetables
-fruit
-vegetable
-
 apple
 apricot
 asparagus
@@ -148,6 +240,7 @@ broccoli
 brussels
 cabbage
 carrot
+cauliflower
 celery
 cherry
 coconut
@@ -155,9 +248,11 @@ corn
 cucumber
 eggplant
 fig
+fruit
 gooseberry
 grape
 grapefruit
+horseradish
 kiwi
 lemon
 lettuce
@@ -186,26 +281,25 @@ spinach
 strawberry
 tomato
 turnip
+vegetable
 watermelon
+zucchini
 
 # group: animals
-animal
-bird
-insect
-fish
-
 alligator
+animal
 badger
 bat
 bear
+bird
 bull
 camel
 cat
 chicken
 chimpanzee
-coyote
 clam
 cow
+coyote
 crab
 crocodile
 deer
@@ -223,6 +317,7 @@ hare
 hedgehog
 hippopotamus
 horse
+insect
 jellyfish
 kangaroo
 kitten
@@ -237,6 +332,7 @@ mouse
 octopus
 otter
 ox
+oyster
 panda
 pig
 puppy
@@ -244,6 +340,7 @@ rabbit
 raccoon
 rat
 reindeer
+salmon
 seahorse
 seal
 shark
@@ -254,6 +351,7 @@ squid
 squirrel
 tiger
 toad
+tuna
 turtle
 walrus
 whale
@@ -327,7 +425,6 @@ peony
 poppy
 rose
 snowdrop
-sunflower
 tulip
 
 # group: trees
@@ -384,7 +481,6 @@ swamp
 tree
 valley
 volcano
-water
 waterfall
 
 # group: weather
@@ -400,7 +496,6 @@ degree
 dew
 drizzle
 drought
-dry
 flood
 fog
 forecast
