@@ -237,14 +237,12 @@ drugstore
 factory
 flat
 gallery
-garage
 garden
 grocer's
 gym
 hairdresser's
 hospital
 hotel
-house
 inn
 institute
 jail
@@ -266,7 +264,6 @@ post office
 prison
 pub
 quarter
-restaurant
 school
 site
 stadium
@@ -377,7 +374,6 @@ salt
 sandwich
 sauce
 sausage
-seed
 snack
 soda
 soup
@@ -597,11 +593,9 @@ door
 entrance
 exit
 fan
-flat
 floor
 furniture
 garage
-garden
 hall
 hallway
 house
@@ -668,7 +662,6 @@ designer
 dentist
 detective
 doctor
-driver
 electrician
 engineer
 farmer
@@ -688,7 +681,6 @@ nanny
 painter
 pharmacist
 photographer
-pilot
 plumber
 policeman
 politician
@@ -769,7 +761,6 @@ shape
 solid
 sphere
 square
-star
 triangle
 
 # group: time
@@ -925,18 +916,15 @@ ice
 icicle
 lightning
 meteorology
-moon
 precipitation
 pressure
 radar
 rain
 rainbow
 rainy
-sky
 sleet
 snow
 storm
-sun
 temperature
 thermometer
 thunder
