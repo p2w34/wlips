@@ -8,11 +8,11 @@
 
 # groups:
 # group: animals
+# group: astronomy
 # group: birds
 # group: body parts
 # group: city
 # group: colours
-# group: cosmos and physics
 # group: eating and food
 # group: emotions
 # group: environment
@@ -27,7 +27,9 @@
 # group: shapes
 # group: time
 # group: transport
-# group: trees
+# group: tree parts
+# group: trees (coniferous)
+# group: trees (deciduous)
 # group: weather
 
 # group: animals
@@ -101,6 +103,30 @@ turtle
 walrus
 whale
 wolf
+
+# group: astronomy
+astronaut
+comet
+constellation
+cosmonaut
+cosmos
+crater
+galaxy
+gravity
+moon
+orbit
+planet
+probe
+rocket
+satellite
+sky
+space
+star
+sun
+telescope
+universe
+vacuum
+zodiac
 
 # group: birds
 cormorant
@@ -187,6 +213,72 @@ waist
 wrist
 
 # group: city
+airport
+arena
+bakery
+bank
+bar
+bazaar
+block
+bookstore
+café
+campus
+capital
+church
+cinema
+city
+city center
+clinic
+college
+court
+district
+downtown
+drugstore
+factory
+flat
+gallery
+garage
+garden
+grocer's
+gym
+hairdresser's
+hospital
+hotel
+house
+inn
+institute
+jail
+kindergarten
+library
+location
+mall
+market
+motel
+museum
+outskirts
+park
+parking lot
+pharmacy
+place
+police station
+port
+post office
+prison
+pub
+quarter
+restaurant
+school
+site
+stadium
+store
+suburb
+theater
+town
+traffic
+traffic jam
+university
+village
+zoo
 
 # group: colours (words like silver or rose go into other categories)
 azure
@@ -207,8 +299,6 @@ silver
 turquoise
 violet
 yellow
-
-# group: cosmos and physics
 
 # group: eating and food
 bacon
@@ -734,14 +824,79 @@ watch
 clock
 
 # group: transport
+aircraft
+aisle
+alley
+arrival
+avenue
 bicycle
+bike
+boulevard
+bridge
+bus
+cab
 car
+crossroads
+departure
+driver
+flight
+helicopter
+journey
+luggage
+motor
+passenger
+passport
+pedestrian
+pilot
+plane
+queue
 road
+roundabout
+scooter
+ship
+station
+taxi
+ticket
+train
+tram
+transport
+tunnel
+vehicle
+walk
 
-# group: trees
+# group: tree parts
+bark
+branch
+bud
+cork
+hollow
+leaf
+needle
+petal
+pollen
+root
+seed
+stem
+thorn
+trunk
+
+# group: trees (coniferous)
+cypress
 fir
+juniper
+larch
 pine
-tree
+spruce
+thuja
+yew
+
+# group: trees (deciduous)
+beech
+birch
+chestnut
+maple
+oak
+willow
 
 # group: weather
 air
