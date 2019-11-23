@@ -22,6 +22,8 @@
 # group: house
 # group: insects
 # group: music
+# group: music (instruments)
+# group: music (voices)
 # group: professions
 # group: sports
 # group: shapes
@@ -640,7 +642,68 @@ spider
 centipede
 worm
 
-# music
+# group: music
+amplifier
+anthem
+audience
+band
+beat
+choir
+concert
+conductor
+duet
+group
+hymn
+instrument
+label
+lyrics
+melody
+microphone
+music
+note
+opera
+orchestra
+player
+quartet
+rhythm
+scale
+singer
+solo
+song
+stage
+studio
+symphony
+system
+track
+trio
+tune
+voice
+
+# group: music (instruments)
+accordion
+bell
+cello
+clarinet
+drum
+guitar
+harmonica
+harp
+mandolin
+piano
+saxophone
+trombone
+trumpet
+violin
+
+# group: music (voices)
+alto
+baritone
+bas
+loud
+quiet
+soft
+soprano
+tenor
 
 # group: professions
 accountant
@@ -690,7 +753,6 @@ receptionist
 researcher
 salesman
 scientist
-singer
 spy
 steward
 translator
