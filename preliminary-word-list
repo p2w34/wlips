@@ -13,6 +13,7 @@
 # group: body parts
 # group: city
 # group: colours
+# group: computer
 # group: eating and food
 # group: emotions
 # group: environment
@@ -298,6 +299,83 @@ silver
 turquoise
 violet
 yellow
+
+# group: computer
+algorithm
+analog
+application
+attachment
+backup
+bandwidth
+base
+bit
+board
+bookmark
+box
+browser
+buffer
+byte
+client
+computer
+cookie
+copy
+data
+database
+desktop
+digital
+disk
+document
+editor
+encryption
+file
+folder
+font
+hardware
+host
+icon
+image
+input
+interface
+key
+keyboard
+link
+logic
+machine
+mail
+media
+memory
+monitor
+network
+node
+offline
+online
+output
+page
+password
+path
+platform
+portal
+printer
+process
+program
+protocol
+real
+script
+security
+server
+shell
+software
+source
+syntax
+system
+template
+text
+thread
+user
+wallpaper
+version
+virtual
+virus
 
 # group: eating and food
 bacon
@@ -601,7 +679,6 @@ garage
 hall
 hallway
 house
-key
 kitchen
 lamp
 lock
@@ -673,7 +750,6 @@ song
 stage
 studio
 symphony
-system
 track
 trio
 tune
