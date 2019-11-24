@@ -26,6 +26,7 @@
 # group: music (instruments)
 # group: music (voices)
 # group: professions
+# group: school
 # group: sports
 # group: shapes
 # group: time
@@ -267,7 +268,6 @@ post office
 prison
 pub
 quarter
-school
 site
 stadium
 store
@@ -668,7 +668,6 @@ closet
 couch
 cupboard
 curtain
-desk
 door
 entrance
 exit
@@ -833,6 +832,47 @@ spy
 steward
 translator
 writer
+
+# group: school
+answer
+arithmetic
+atlas
+blackboard
+book
+calculator
+chalk
+compass
+desk
+dictionary
+encyclopedia
+eraser
+exam
+experiment
+globe
+glossary
+glue
+ink
+language
+lesson
+map
+marker
+paper
+pen
+pencil
+principal
+project
+protractor
+question
+quiz
+rubber
+ruler
+school
+science
+stapler
+student
+tape
+teacher
+test
 
 # group: sports
 archery
