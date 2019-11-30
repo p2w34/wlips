@@ -15,7 +15,7 @@
 # group: colours
 # group: computer
 # group: eating and food
-# group: emotions
+# group: emotions and feelings
 # group: environment
 # group: family
 # group: flowers
@@ -27,6 +27,7 @@
 # group: music (voices)
 # group: professions
 # group: school
+# group: shopping
 # group: sports
 # group: shapes
 # group: time
@@ -254,7 +255,6 @@ kindergarten
 library
 location
 mall
-market
 motel
 museum
 outskirts
@@ -270,7 +270,6 @@ pub
 quarter
 site
 stadium
-store
 suburb
 theater
 town
@@ -414,7 +413,6 @@ grain
 hazelnut
 herb
 honey
-hunger
 jug
 juice
 jum
@@ -475,10 +473,120 @@ water
 wheat
 yogurt
 
-# group: emotions
-sad
+# group: emotions and feelings
+afraid
+aggression
+agony
+amusement
+anger
+annoyance
+anxiety
+arrogance
+awful
+bad
+bliss
+boredom
+bravery
+calm
+caprice
+careful
+caution
+clever
+concentration
+confidence
+confusion
+crazy
+curious
+depression
+determined
+disappointment
+disbelief
+disgust
+ecstatic
+embarrassment
+emotion
+enraged
+envious
+excited
+exhausted
+fair
+fantastic
+fear
+feeling
+friendly
+frightened
+frustration
+glad
+good
+great
+guilt
+hangover
 happy
-humor
+hatred
+help
+honest
+hope
+horror
+hunger
+hurt
+hysteria
+idiotic
+indifferent
+innocent
+interest
+jealous
+joy
+lonely
+love
+lovesick
+lovestruck
+loving
+mad
+meditative
+misery
+nervous
+nice
+optimism
+pain
+pessimism
+pleasant
+pleased
+pleasure
+prejudice
+proud
+puzzle
+regret
+relief
+sad
+sadness
+satisfaction
+scary
+sensible
+serious
+shame
+sheepish
+shock
+shy
+shyness
+sick
+silence
+silly
+skepticism
+sleep
+smug
+sorry
+strange
+stubborn
+stupid
+surprise
+suspicion
+terrible
+thirst
+tired
+upset
+withdrawal
+wonder
+worry
 
 # group: environment
 bay
@@ -742,7 +850,6 @@ orchestra
 player
 quartet
 rhythm
-scale
 singer
 solo
 song
@@ -785,14 +892,12 @@ accountant
 actor
 agent
 architect
-assistant
 baker
 barber
 butcher
 biologist
 businessman
 carpenter
-cashier
 cleaner
 cooper
 dancer
@@ -873,6 +978,55 @@ student
 tape
 teacher
 test
+
+# group: shopping
+assistant
+bag
+bargain
+basket
+belt
+bill
+buyer
+card
+cashier
+change
+cheap
+chemist
+complaint
+consumer
+corridor
+counter
+coupon
+customer
+dealer
+delivery
+department
+discount
+expensive
+license
+manager
+market
+offer
+price
+purse
+receipt
+refund
+register
+sale
+scale
+seller
+shelve
+shop
+shopping
+sign
+signboard
+stock
+store
+till
+trader
+trolley
+wallet
+warehouse
 
 # group: sports
 archery
