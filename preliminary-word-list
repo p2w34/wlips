@@ -22,6 +22,7 @@
 # group: fruits and vegetables
 # group: house
 # group: insects
+# group: movies
 # group: music
 # group: music (instruments)
 # group: music (voices)
@@ -230,7 +231,6 @@ café
 campus
 capital
 church
-cinema
 city
 city center
 clinic
@@ -526,7 +526,6 @@ hatred
 help
 honest
 hope
-horror
 hunger
 hurt
 hysteria
@@ -826,6 +825,33 @@ spider
 centipede
 worm
 
+# group: movies
+actor
+ad
+animation
+budget
+camera
+cartoon
+cast
+character
+cinema
+comedy
+critic
+debut
+drama
+effect
+entertainment
+genre
+hero
+horror
+movie
+plot
+role
+scene
+screen
+story
+trailer
+
 # group: music
 amplifier
 anthem
@@ -889,7 +915,6 @@ tenor
 
 # group: professions
 accountant
-actor
 agent
 architect
 baker
