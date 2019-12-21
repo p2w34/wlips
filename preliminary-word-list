@@ -11,6 +11,8 @@
 # group: astronomy
 # group: birds
 # group: body parts
+# group: chemistry - elements
+# group: chemistry
 # group: city
 # group: colours
 # group: computer
@@ -218,6 +220,56 @@ tooth
 waist
 wrist
 
+# group: chemistry - elements
+calcium
+carbon
+chlorine
+chromium
+copper
+fluorine
+gold
+helium
+hydrogen
+iron
+lead
+lithium
+neon
+nitrogen
+oxygen
+platinum
+potassium
+silicon
+silver
+sulfur
+
+# group: chemistry
+acid
+aerosol
+atom
+calorie
+chain
+charge
+chemistry
+crystal
+density
+electron
+fat
+foam
+gas
+gel
+height
+length
+mass
+metal
+mineral
+mixture
+molecule
+neutron
+oil
+radiation
+synthesis
+weight
+
 # group: city
 airport
 arena
@@ -294,7 +346,6 @@ navy
 pink
 purple
 white
-silver
 turquoise
 violet
 yellow
