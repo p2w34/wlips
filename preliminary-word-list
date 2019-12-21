@@ -11,8 +11,8 @@
 # group: astronomy
 # group: birds
 # group: body parts
-# group: chemistry - elements
 # group: chemistry
+# group: chemistry (elements)
 # group: city
 # group: colours
 # group: computer
@@ -220,28 +220,6 @@ tooth
 waist
 wrist
 
-# group: chemistry - elements
-calcium
-carbon
-chlorine
-chromium
-copper
-fluorine
-gold
-helium
-hydrogen
-iron
-lead
-lithium
-neon
-nitrogen
-oxygen
-platinum
-potassium
-silicon
-silver
-sulfur
-
 # group: chemistry
 acid
 aerosol
@@ -269,6 +247,28 @@ oil
 radiation
 synthesis
 weight
+
+# group: chemistry (elements)
+calcium
+carbon
+chlorine
+chromium
+copper
+fluorine
+gold
+helium
+hydrogen
+iron
+lead
+lithium
+neon
+nitrogen
+oxygen
+platinum
+potassium
+silicon
+silver
+sulfur
 
 # group: city
 airport
