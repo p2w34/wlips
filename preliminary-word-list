@@ -15,6 +15,7 @@
 # group: chemistry
 # group: chemistry (elements)
 # group: city
+# group: clothes
 # group: colours
 # group: computer
 # group: eating and food
@@ -49,6 +50,7 @@ bat
 bear
 bird
 bull
+calf
 camel
 cat
 chicken
@@ -61,6 +63,7 @@ crocodile
 deer
 dog
 dolphin
+donkey
 elephant
 elk
 fox
@@ -78,6 +81,7 @@ jellyfish
 kangaroo
 kitten
 koala
+lamb
 leopard
 lion
 lizard
@@ -148,6 +152,7 @@ finch
 flamingo
 goose
 hawk
+hen
 ostrich
 owl
 parrot
@@ -157,6 +162,7 @@ penguin
 pigeon
 raven
 robin
+rooster
 seagull
 sparrow
 swallow
@@ -173,6 +179,9 @@ armpit
 back
 beard
 bladder
+blood
+body
+bone
 brain
 cheek
 chest
@@ -204,6 +213,7 @@ liver
 lung
 moustache
 mouth
+muscle
 nail
 navel
 neck
@@ -211,9 +221,12 @@ nose
 palm
 pupil
 shoulder
+skin
 stomach
+teeth
 temple
 thigh
+throat
 thumb
 toe
 tongue
@@ -364,6 +377,50 @@ traffic jam
 university
 village
 zoo
+
+# clothes
+bandana
+belt
+beret
+blouse
+boot
+cap
+cardigan
+coat
+dress
+glove
+hat
+helmet
+jacket
+jumper
+pajamas
+pants
+scarf
+shirt
+shoe
+skirt
+suit
+sweater
+tie
+trench
+trousers
+vest
+
+# group: clothes (materials)
+button
+cloth
+cotton
+denim
+leather
+linen
+pattern
+scissor
+silk
+suede
+thimble
+wool
+woolen
+zipper
 
 # group: colours (words like silver or rose go into other categories)
 azure
@@ -1090,7 +1147,6 @@ assistant
 bag
 bargain
 basket
-belt
 bill
 buyer
 card
