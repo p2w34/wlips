@@ -11,6 +11,7 @@
 # group: astronomy
 # group: birds
 # group: body parts
+# group: business
 # group: celebrations
 # group: chemistry
 # group: chemistry (elements)
@@ -266,6 +267,92 @@ toy
 wedding
 wish
 vow
+
+# group: business
+advantage
+advertisement
+advice
+agenda
+apology
+authorization
+brand
+budget
+business
+commission
+company
+comparison
+competition
+confirmation
+cost
+credit
+custom
+deadline
+debt
+decision
+decrease
+deficit
+description
+difference
+distribution
+employee
+employer
+inquiry
+economy
+equipment
+estimate
+experience
+explanation
+facilities
+feedback
+goal
+growth
+guarantee
+improvement
+increase
+industry
+interest
+inventory
+invoice
+knowledge
+limit
+loss
+margin
+message
+mistake
+objective
+opinion
+option
+payment
+penalty
+permission
+possibility
+product
+production
+profit
+promotion
+purchase
+reduction
+reminder
+repairs
+report
+responsibility
+result
+retailer
+return
+rise
+risk
+salary
+sales
+schedule
+share
+signature
+success
+suggestion
+supply
+support
+target
+turnover
+wholesaler
 
 # group: chemistry
 acid
@@ -670,7 +757,6 @@ hysteria
 idiotic
 indifferent
 innocent
-interest
 jealous
 joy
 lonely
@@ -967,7 +1053,6 @@ worm
 actor
 ad
 animation
-budget
 camera
 cartoon
 cast
