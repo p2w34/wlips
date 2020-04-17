@@ -11,6 +11,7 @@
 # group: astronomy
 # group: birds
 # group: body parts
+# group: celebrations
 # group: chemistry
 # group: chemistry (elements)
 # group: city
@@ -220,6 +221,39 @@ tooth
 waist
 wrist
 
+# group: celebrations
+age
+anniversary
+birth
+birthday
+balloon
+bow
+cake
+candle
+candy
+celebration
+chocolate
+cookie
+event
+feast
+festive
+fun
+game
+gathering
+gift
+invitation
+jubilee
+lollipop
+package
+parade
+picnic
+party
+speech
+toy
+wedding
+wish
+vow
+
 # group: chemistry
 acid
 aerosol
@@ -367,7 +401,6 @@ buffer
 byte
 client
 computer
-cookie
 copy
 data
 database
@@ -438,8 +471,6 @@ bread
 breakfast
 buckwheat
 butter
-cake
-candy
 cheese
 chef
 chives
@@ -470,7 +501,6 @@ jum
 knife
 lemonade
 loaf
-lollipop
 lunch
 meat
 menu
