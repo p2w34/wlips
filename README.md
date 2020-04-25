@@ -24,7 +24,7 @@ There are two key observations:
 1) Various languages might be grouped based on the character set they use. They are ofter very similar.
 It brings many benefits, including common set of requirements for such group of languages.  
 2) Creation of list for particular language does not have to start from the scratch!
-The main idea is that lists creation is based on the provided [preliminary word list](./preliminary-word-list)
+The main idea is that lists creation is based on the provided [preliminary word list](wlip-0003/english_us/preliminary-word-list)
 consisting of a few thousand commonly used words. It is way easier to translate such 'master list' and then polish it.
 Plus, very often, some of the common words sound very similar in various languages.
 
