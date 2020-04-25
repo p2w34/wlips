@@ -1,5 +1,5 @@
 import argparse
-import hashlib
+from scripts.src.FileHash import FileHash
 
 parser = argparse.ArgumentParser(
     description="Calculate SHA-3 hash of a file in hex form and outputs least significant 8 characters.",
@@ -8,9 +8,5 @@ parser.add_argument('-f', '--file', required=True)
 
 args = parser.parse_args()
 filename = args.file
-
-sha3_hash = hashlib.sha3_256()
-with open(filename,"rb") as f:
-    for bytes in iter(lambda: f.read(4096),b""):
-        sha3_hash.update(bytes)
-    print(sha3_hash.hexdigest()[-8:])
+file_hash = FileHash().compute_file_hash(filename)
+print(file_hash)

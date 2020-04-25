@@ -1,7 +1,7 @@
 import re
 import sys
 
-with open("./preliminary-word-list") as f:
+with open("./wlip-0003/english_us/preliminary-word-list") as f:
     lines = f.readlines()
 
     words = []
