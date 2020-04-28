@@ -63,29 +63,39 @@ class WordListCreator:
         return map_of_neighbours
 
     def create_sets_of_neighbours(self, map_of_neighbours):
-
-        sets_of_neighbours = set()
-
+        result = set()
         for word in map_of_neighbours.keys():
-            # if a neighbour in already existing set - add
-            # else create a new set
-            word_has_neighbours = False
-            set_of_neighbours_to_update = {}
-            set_of_neighbours_updated = {}
-            for set_of_neighbours in sets_of_neighbours:
-                for word2 in set_of_neighbours:
-                    if word2 in map_of_neighbours.get(word):
-                        set_of_neighbours_to_update = set_of_neighbours
-                        set_of_neighbours_updated = set([word]).union(set_of_neighbours)
-                        word_has_neighbours = True
+            if len(map_of_neighbours.get(word)) == 0:
+                result.add(frozenset([word]))
 
-            if word_has_neighbours == True:
-                sets_of_neighbours.remove(set_of_neighbours_to_update)
-                sets_of_neighbours.update({frozenset(set_of_neighbours_updated)})
-            else:
-                sets_of_neighbours.add(frozenset([word]))
+        return result
 
-        return sets_of_neighbours
+        # result = set()
+        #
+        # for key in map_of_neighbours.keys():
+        #     result.add(frozenset([key]))
+        #
+        # joins_performed = True
+        #
+        # while joins_performed == True and len(result) > 1:
+        #     joins_performed = False
+        #     a = result.pop()
+        #     sets_to_join_with = set()
+        #     for b in result:
+        #         for element_a in a:
+        #             for element_b in b:
+        #                 if element_a in map_of_neighbours.get(element_b):
+        #                     sets_to_join_with.add(b)
+        #                     joins_performed = True
+        #
+        #     set_to_add = set().union(a)
+        #     for set_to_remove in sets_to_join_with:
+        #         result.remove(set_to_remove)
+        #         set_to_add = set_to_add.union(set_to_remove)
+        #
+        #     result.add(frozenset(set_to_add))
+
+        # return result
 
     def get_word_list(self, sets_of_neighbours):
         word_list = []
