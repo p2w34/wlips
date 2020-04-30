@@ -5,8 +5,9 @@ from Levenshtein import distance
 
 class WordListCreator:
 
-    def create_word_list(self, file_path):
+    def create_word_list(self, file_path, character_sets):
         self.validate_file_exists(file_path)
+        self.character_sets = character_sets
         lines = self.read_file(file_path)
         words = self.get_words(lines)
         word_list = self.create_list(words)

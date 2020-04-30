@@ -1,7 +1,7 @@
 # Contribution FAQ
 
 Currently this repository is still in it's infancy.
-Contributors are asked to focus on extending [preliminary word list](wlip-0003/english_us/preliminary-word-list).
+Contributors are asked to focus on extending [preliminary word list](wlip-0003/preliminary-word-lists/english_us).
 Let's first add ~5k words:
   - length does not matter here - a word might be too long for English list, but it might be appropriate for other lists,
   - common nouns and adjectives known to everyone,

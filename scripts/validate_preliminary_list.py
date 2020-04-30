@@ -1,7 +1,7 @@
 import re
 import sys
 
-with open("./wlip-0003/english_us/preliminary-word-list") as f:
+with open("./wlip-0003/preliminary-word-lists/english_us") as f:
     lines = f.readlines()
 
     words = []
@@ -13,10 +13,10 @@ with open("./wlip-0003/english_us/preliminary-word-list") as f:
 
         word = word_match.group(1)
         if word in words:
-            print("error: first duplicated word on preliminary-word-list: '{}'".format(word))
+            print("error: first duplicated word on english_us: '{}'".format(word))
             sys.exit(1)
 
         words.append(word)
 
-    print("success: preliminary-word-list has no duplicated words")
+    print("success: english_us has no duplicated words")
     sys.exit(0)
