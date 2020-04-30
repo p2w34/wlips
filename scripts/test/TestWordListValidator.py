@@ -1,29 +1,15 @@
 # This Python file uses the following encoding: utf-8
 import unittest
 
+from scripts.src.CharacterSetDescription import CharacterSetDescription
 from scripts.src.WordList import WordList
 from scripts.src.WordListValidator import WordListValidator
+from scripts.test.TestConstants import CHARACTER_SET_DESCRIPTION_EMPTY, CHARACTER_SET_ENGLISH, \
+    CHARACTER_SET_DESCRIPTION_ENGLISH, CHARACTER_SET_POLISH
+
 
 class TestWordListValidator(unittest.TestCase):
 
-    ENGLISH_CHARACTERS = list("abcdefghijklmnopqrstuvwxyz")
-    POLISH_CHARACTERS = list("abcdefghijklmnoprstuwyząćęłńóśźż")
-    BASE_CHARACTER_SET_ENGLISH = {"english": ENGLISH_CHARACTERS}
-    CHARACTER_SET_ENGLISH = {
-        WordList.BASE_CHARACTER_SET:"english",
-        WordList.REDUNDANT_CHARACTER_SET: [],
-        WordList.EXTRA_CHARACTER_SET: {}
-    }
-    CHARACTER_SET_POLISH = {
-        WordList.BASE_CHARACTER_SET:"english",
-        WordList.REDUNDANT_CHARACTER_SET: ['q','v','x'],
-        WordList.EXTRA_CHARACTER_SET: {'ą':'a', 'ć':'c', 'ę':'e', 'ł':'l', 'ń':'n', 'ó':'o', 'ś':'s', 'ź':'z', 'ż':'z'}
-    }
-    CHARACTER_SET_EMPTY = {
-        WordList.BASE_CHARACTER_SET:"",
-        WordList.REDUNDANT_CHARACTER_SET: [],
-        WordList.EXTRA_CHARACTER_SET: {}
-    }
     incorrect_scenarios_file_name = [
         ["12345678", "just_language_name_without_hash"],
         ["12345678", "12345678_hash_on_wrong_position"],
@@ -37,7 +23,7 @@ class TestWordListValidator(unittest.TestCase):
     def test_incorrect_is_file_name_valid(self):
         for expected_file_hash, file_name in self.incorrect_scenarios_file_name:
             with self.subTest():
-                self.assertFalse(WordListValidator({}, WordList(self.CHARACTER_SET_EMPTY, [], {expected_file_hash:file_name})).is_file_name_valid())
+                self.assertFalse(WordListValidator({}, WordList(CHARACTER_SET_DESCRIPTION_EMPTY, [], {expected_file_hash:file_name})).is_file_name_valid())
 
     correct_scenarios_file_name = [
         ["12345678", "english-12345678"],
@@ -49,127 +35,96 @@ class TestWordListValidator(unittest.TestCase):
     def test_correct_is_file_name_syntax(self):
         for expected_file_hash, file_name in self.correct_scenarios_file_name:
             with self.subTest():
-                self.assertTrue(WordListValidator({}, WordList(self.CHARACTER_SET_EMPTY, [], {expected_file_hash:file_name})).is_file_name_valid())
+                self.assertTrue(WordListValidator({}, WordList(CHARACTER_SET_DESCRIPTION_EMPTY, [], {expected_file_hash:file_name})).is_file_name_valid())
 
     correct_scenarios_character_set = [
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_ENGLISH, ["wordone", "wordtwo", "wordthree"], {}),
-         ENGLISH_CHARACTERS],
+        [CHARACTER_SET_ENGLISH,
+         WordList(CHARACTER_SET_ENGLISH, ["wordone", "wordtwo", "wordthree"], {})],
 
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_POLISH, ["zażółć", "gęślą", "jaźń"], {}),
-         POLISH_CHARACTERS]
+        [CHARACTER_SET_POLISH,
+         WordList(CHARACTER_SET_POLISH, ["zażółć", "gęślą", "jaźń"], {})],
     ]
-    def test_get_character_set(self):
-        for base_character_sets, word_list, expected_character_set in self.correct_scenarios_character_set:
-            with self.subTest():
-                self.assertEqual(WordListValidator(base_character_sets, word_list).get_character_set(), expected_character_set)
 
     def test_correct_is_character_set_valid(self):
-        for character_sets, word_list, expected_character_set in self.correct_scenarios_character_set:
+        for character_set, word_list in self.correct_scenarios_character_set:
             with self.subTest():
-                self.assertTrue(WordListValidator(character_sets, word_list).is_character_set_valid())
+                self.assertTrue(WordListValidator(character_set, word_list).is_character_set_valid())
 
     not_allowed_character='ą'
     incorrect_scenarios_character_set = [
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_ENGLISH, ["word"+not_allowed_character], {}),
-         ENGLISH_CHARACTERS],
+        [CHARACTER_SET_ENGLISH,
+         WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["word"+not_allowed_character], {})]
     ]
     def test_incorrect_is_character_set_valid(self):
-        for character_sets, word_list, expected_character_set in self.incorrect_scenarios_character_set:
+        for character_set, word_list in self.incorrect_scenarios_character_set:
             with self.subTest():
-                self.assertFalse(WordListValidator(character_sets, word_list).is_character_set_valid())
+                self.assertFalse(WordListValidator(character_set, word_list).is_character_set_valid())
 
     def test_correct_is_word_length_valid(self):
-        word_list = WordList(self.CHARACTER_SET_ENGLISH, ["word", "worda", "wordab", "wordabc", "wordabcd"], {})
-        self.assertTrue(WordListValidator(self.BASE_CHARACTER_SET_ENGLISH, word_list).is_word_length_valid())
+        word_list = WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["word", "worda", "wordab", "wordabc", "wordabcd"], {})
+        self.assertTrue(WordListValidator(CHARACTER_SET_ENGLISH, word_list).is_word_length_valid())
 
     incorrect_scenarios_word_length = [
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_ENGLISH, ["wor"], {})],
+        [CHARACTER_SET_ENGLISH,
+         WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["wor"], {})],
 
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_ENGLISH, ["wordabcde"], {})]
+        [CHARACTER_SET_ENGLISH,
+         WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["wordabcde"], {})]
     ]
     def test_incorrect_is_word_length_invalid(self):
-        for character_sets, word_list in self.incorrect_scenarios_word_length:
+        for character_set, word_list in self.incorrect_scenarios_word_length:
             with self.subTest():
-                self.assertFalse(WordListValidator(character_sets, word_list).is_word_length_valid())
+                self.assertFalse(WordListValidator(character_set, word_list).is_word_length_valid())
 
     def test_correct_is_number_of_words_valid(self):
-        word_list = WordList(self.CHARACTER_SET_ENGLISH, self.create_word_list_of_length(2048), {})
-        self.assertTrue(WordListValidator(self.BASE_CHARACTER_SET_ENGLISH, word_list).is_number_of_words_valid())
+        word_list = WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, self.create_word_list_of_length(2048), {})
+        self.assertTrue(WordListValidator(CHARACTER_SET_ENGLISH, word_list).is_number_of_words_valid())
 
     def test_incorrect_is_number_of_words_valid(self):
-        word_list = WordList(self.CHARACTER_SET_ENGLISH, self.create_word_list_of_length(2047), {})
-        self.assertFalse(WordListValidator(self.BASE_CHARACTER_SET_ENGLISH, word_list).is_number_of_words_valid())
+        word_list = WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, self.create_word_list_of_length(2047), {})
+        self.assertFalse(WordListValidator(CHARACTER_SET_ENGLISH, word_list).is_number_of_words_valid())
 
-        word_list = WordList(self.CHARACTER_SET_ENGLISH, self.create_word_list_of_length(2049), {})
-        self.assertFalse(WordListValidator(self.BASE_CHARACTER_SET_ENGLISH, word_list).is_number_of_words_valid())
+        word_list = WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, self.create_word_list_of_length(2049), {})
+        self.assertFalse(WordListValidator(CHARACTER_SET_ENGLISH, word_list).is_number_of_words_valid())
 
     def test_correct_is_list_of_words_sorted(self):
-        word_list = WordList(self.CHARACTER_SET_ENGLISH, ["worda", "wordb", "wordc"], {})
-        self.assertTrue(WordListValidator(self.BASE_CHARACTER_SET_ENGLISH, word_list).is_list_of_words_sorted())
+        word_list = WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["worda", "wordb", "wordc"], {})
+        self.assertTrue(WordListValidator(CHARACTER_SET_ENGLISH, word_list).is_list_of_words_sorted())
 
     def test_incorrect_is_list_of_words_sorted(self):
-        word_list = WordList(self.CHARACTER_SET_ENGLISH, ["wordc", "wordb", "worda"], {})
-        self.assertFalse(WordListValidator(self.BASE_CHARACTER_SET_ENGLISH, word_list).is_list_of_words_sorted())
+        word_list = WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["wordc", "wordb", "worda"], {})
+        self.assertFalse(WordListValidator(CHARACTER_SET_ENGLISH, word_list).is_list_of_words_sorted())
 
     def test_correct_is_first_4_letter_unique(self):
-        word_list = WordList(self.CHARACTER_SET_ENGLISH, ["worad", "worbd", "worcd", "wordd"], {})
-        self.assertTrue(WordListValidator(self.BASE_CHARACTER_SET_ENGLISH, word_list).is_first_4_characters_unique())
+        word_list = WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["worad", "worbd", "worcd", "wordd"], {})
+        self.assertTrue(WordListValidator(CHARACTER_SET_ENGLISH, word_list).is_first_4_characters_unique())
 
     def test_correct_is_first_4_letter_unique(self):
-        word_list = WordList(self.CHARACTER_SET_ENGLISH, ["wordd", "wordd"], {})
-        self.assertFalse(WordListValidator(self.BASE_CHARACTER_SET_ENGLISH, word_list).is_first_4_characters_unique())
-
-    scenarios_map_word = [
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_ENGLISH, ["worad", "worbd", "worcd", "wordd"], {}),
-         ["worad", "worbd", "worcd", "wordd"]],
-
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_POLISH, ["zażółć", "gęślą", "jaźń"], {}),
-         ["zazolc", "gesla", "jazn"]]
-    ]
-    def test_map_word(self):
-        for character_sets, word_list, expected_mapped_word_list in self.scenarios_map_word:
-            with self.subTest():
-                word_list_validator = WordListValidator(character_sets, word_list)
-                word_list_mapped = []
-                for word in word_list.word_list:
-                    word_mapped = word_list_validator.map_word(word)
-                    word_list_mapped.append(word_mapped)
-
-                self.assertListEqual(word_list_mapped, expected_mapped_word_list)
+        word_list = WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["wordd", "wordd"], {})
+        self.assertFalse(WordListValidator(CHARACTER_SET_ENGLISH, word_list).is_first_4_characters_unique())
 
     scenarios_levenshtein = [
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_ENGLISH, ["aaaa", "aabb", "aaaabb", "bbaaaa"], {}),
+        [CHARACTER_SET_ENGLISH,
+         WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["aaaa", "aabb", "aaaabb", "bbaaaa"], {}),
          []],
 
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_ENGLISH, ["aaaa", "aaab"], {}),
+        [CHARACTER_SET_ENGLISH,
+         WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["aaaa", "aaab"], {}),
          ['CREATE (aaaa:word {value: "aaaa"})',
           'CREATE (aaab:word {value: "aaab"})',
           'CREATE (aaaa)-[:D]->(aaab)']],
 
-        [BASE_CHARACTER_SET_ENGLISH,
-         WordList(CHARACTER_SET_ENGLISH, ["aaaa", "aaab", "caaa"], {}),
+        [CHARACTER_SET_ENGLISH,
+         WordList(CHARACTER_SET_DESCRIPTION_ENGLISH, ["aaaa", "aaab", "caaa"], {}),
          ['CREATE (aaaa:word {value: "aaaa"})',
           'CREATE (aaab:word {value: "aaab"})',
           'CREATE (caaa:word {value: "caaa"})',
           'CREATE (aaaa)-[:D]->(aaab)',
           'CREATE (aaaa)-[:D]->(caaa)']],
 
-        [BASE_CHARACTER_SET_ENGLISH,
+        [CHARACTER_SET_ENGLISH,
          WordList(
-             {
-                WordList.BASE_CHARACTER_SET: "english",
-                WordList.REDUNDANT_CHARACTER_SET: [],
-                WordList.EXTRA_CHARACTER_SET: {'ą':'a'}
-             },
+            CharacterSetDescription("[english+ą:a]"),
              ["aaaa", "aaąą", "ąąaa", "bbbb"],
              {}
          ),

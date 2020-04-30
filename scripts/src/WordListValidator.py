@@ -1,9 +1,10 @@
 import re
 from Levenshtein import distance
-from scripts.src.WordList import WordList
+
+from scripts.src.CharacterSetUtils import CharacterSetUtils
+
 
 class WordListValidator:
-
     MIN_WORD_LENGTH = 4
     MAX_WORD_LENGTH = 8
     NO_OF_WORDS = 2048
@@ -12,11 +13,11 @@ class WordListValidator:
     FILE_NAME_MAX_LENGTH = 255
     FILE_NAME_NUMBER_OF_SEGMENTS_MAX = 3
 
-    base_character_sets = None
+    character_set = None
     word_list = None
 
-    def __init__(self, base_character_sets, word_list):
-        self.base_character_sets = base_character_sets
+    def __init__(self, character_set, word_list):
+        self.character_set = character_set
         self.word_list = word_list
 
     def validate(self):
@@ -85,11 +86,10 @@ class WordListValidator:
         return True
 
     def is_character_set_valid(self):
-        character_set = self.get_character_set()
 
         for word in self.word_list.word_list:
             for c in word:
-                if c not in character_set:
+                if c not in self.character_set:
                     return False
         return True
 
@@ -125,12 +125,12 @@ class WordListValidator:
         nodes = []
         vertices = []
 
-        for i in range(len(word_list)-1):
+        for i in range(len(word_list) - 1):
             word_a = word_list[i]
-            for j in range(i+1, len(word_list)):
+            for j in range(i + 1, len(word_list)):
                 word_b = word_list[j]
-                word_a_mapped = self.map_word(word_a)
-                word_b_mapped = self.map_word(word_b)
+                word_a_mapped = CharacterSetUtils().map_word(self.word_list.character_set_description, word_a)
+                word_b_mapped = CharacterSetUtils().map_word(self.word_list.character_set_description, word_b)
                 d = distance(word_a_mapped, word_b_mapped)
                 if d < self.MIN_LEVENSHTEIN_DISTANCE:
                     word_a_node = self.create_node_string(word_a)
@@ -141,46 +141,16 @@ class WordListValidator:
                         nodes.append(word_b_node)
                     vertices.append(self.create_vertice_string(word_a, word_b))
 
-        return nodes+vertices
-
-    def get_character_set(self):
-        character_set = []
-        base_character_set = self.word_list.character_set[WordList.BASE_CHARACTER_SET]
-        redundant_character_set = self.word_list.character_set[WordList.REDUNDANT_CHARACTER_SET]
-        extra_character_set = self.word_list.character_set[WordList.EXTRA_CHARACTER_SET]
-
-        if not extra_character_set:
-            character_set = self.base_character_sets[base_character_set]
-        else:
-            character_set = self.base_character_sets[base_character_set] + [k for k in extra_character_set.keys()]
-
-        for c in redundant_character_set:
-            character_set.remove(c)
-
-        return character_set
-
-    def map_word(self, word):
-        mappings = self.word_list.character_set[WordList.EXTRA_CHARACTER_SET]
-        if not mappings:
-            return word
-
-        word_mapped = ""
-        for c in word:
-            if c in mappings.keys():
-                word_mapped += mappings[c]
-            else:
-                word_mapped += c
-
-        return word_mapped
+        return nodes + vertices
 
     def create_node_string(self, word):
         part_1 = 'CREATE ({}:word'.format(word)
         part_2 = ' {value: '
         part_3 = '"{}"'.format(word)
         part_4 = '})'
-        return part_1+part_2+part_3+part_4
+        return part_1 + part_2 + part_3 + part_4
 
     def create_vertice_string(self, word_a, word_b):
         part_1 = 'CREATE ({})'.format(word_a)
         part_2 = '-[:D]->({})'.format(word_b)
-        return part_1+part_2
+        return part_1 + part_2
