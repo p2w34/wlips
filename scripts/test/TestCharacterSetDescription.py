@@ -7,6 +7,9 @@ from scripts.src.CharacterSetDescription import CharacterSetDescription
 class TestCharacterSet(unittest.TestCase):
     correct_character_set_description = [
         ("[english]", "english", [], {}),
+        ("some random letters before [english]", "english", [], {}),
+        ("[english] some random letters after", "english", [], {}),
+        ("# some random letters before [english] and after", "english", [], {}),
         ("[english+ą:a]", "english", [], {"ą": "a"}),
         ("[english-q]", "english", ['q'], {}),
         ("[english-qv]", "english", ['q', 'v'], {}),
@@ -36,8 +39,6 @@ class TestCharacterSet(unittest.TestCase):
         'english+',
         '[english+]',
         '[english-]',
-        'a[english]',
-        '[english]a',
         '[english+ą|a]',
         '[english-q-]',
         '[english-q-v]',

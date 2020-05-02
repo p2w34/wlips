@@ -2,49 +2,66 @@
 import unittest
 
 from scripts.src.CharacterSetUtils import CharacterSetUtils
-from scripts.test.TestConstants import CHARACTER_SETS, CHARACTER_SET_DESCRIPTION_ENGLISH, \
+from scripts.test.TestConstants import BASE_CHARACTER_SETS, CHARACTER_SET_DESCRIPTION_ENGLISH, \
     CHARACTER_SET_ENGLISH, CHARACTER_SET_DESCRIPTION_POLISH, CHARACTER_SET_POLISH
 
 
 class TestCharacterSetUtils(unittest.TestCase):
 
     correct_scenarios_character_set = [
-        [CHARACTER_SETS,
+        [BASE_CHARACTER_SETS,
          CHARACTER_SET_DESCRIPTION_ENGLISH,
          CHARACTER_SET_ENGLISH],
 
-        [CHARACTER_SETS,
+        [BASE_CHARACTER_SETS,
          CHARACTER_SET_DESCRIPTION_POLISH,
          CHARACTER_SET_POLISH]
     ]
 
     def test_get_character_set(self):
-        for character_sets, character_set, expected_character_set in self.correct_scenarios_character_set:
+        for base_character_sets, character_set_description, expected_character_set in self.correct_scenarios_character_set:
             with self.subTest():
                 self.assertEqual(
                     expected_character_set,
-                    CharacterSetUtils().get_character_set(character_sets, character_set)
+                    CharacterSetUtils().get_character_set(base_character_sets, character_set_description)
                 )
 
     scenarios_map_word = [
-        [CHARACTER_SET_DESCRIPTION_ENGLISH,
-         ["worad", "worbd", "worcd", "wordd"],
-         ["worad", "worbd", "worcd", "wordd"]],
+        [CHARACTER_SET_DESCRIPTION_ENGLISH, "worad", "worad"],
+        [CHARACTER_SET_DESCRIPTION_ENGLISH, "worbd", "worbd"],
+        [CHARACTER_SET_DESCRIPTION_ENGLISH, "worcd", "worcd"],
+        [CHARACTER_SET_DESCRIPTION_ENGLISH, "wordd", "wordd"],
 
-        [CHARACTER_SET_DESCRIPTION_POLISH,
-         ["zażółć", "gęślą", "jaźń"],
-         ["zazolc", "gesla", "jazn"]]
+        [CHARACTER_SET_DESCRIPTION_POLISH, "zażółć", "zazolc"],
+        [CHARACTER_SET_DESCRIPTION_POLISH, "gęślą", "gesla"],
+        [CHARACTER_SET_DESCRIPTION_POLISH, "jaźń", "jazn"],
     ]
 
     def test_map_word(self):
-        for character_set, words, expected_words_mapped in self.scenarios_map_word:
+        for character_set_description, word, expected_word_mapped in self.scenarios_map_word:
             with self.subTest():
-                word_list_mapped = []
-                for word in words:
-                    word_mapped = CharacterSetUtils().map_word(character_set, word)
-                    word_list_mapped.append(word_mapped)
+                word_mapped = CharacterSetUtils().map_word(character_set_description, word)
+                self.assertEqual(expected_word_mapped, word_mapped)
 
-                self.assertListEqual(expected_words_mapped, word_list_mapped)
+    scenarios_map_words = [
+        [CHARACTER_SET_DESCRIPTION_POLISH,
+         ["zażółć", "gęślą", "jaźń"],
+         {"zazolc": ["zażółć"], "gesla": ["gęślą"], "jazn":["jaźń"]}],
+
+        [CHARACTER_SET_DESCRIPTION_POLISH,
+         ["zażółć", "gęślą", "jaźń", "jaźn", "jazn"],
+         {"zazolc": ["zażółć"], "gesla": ["gęślą"], "jazn":["jaźń", "jaźn", "jazn"]}],
+
+        [CHARACTER_SET_DESCRIPTION_POLISH,
+         ["zażółć", "gęślą", "jaźń", "zazolc", "gęśla", "jaźn", "jazn"],
+         {"zazolc": ["zażółć", "zazolc"], "gesla": ["gęślą", "gęśla"], "jazn":["jaźń", "jaźn", "jazn"]}]
+    ]
+    def test_map_words(self):
+        for character_set_description, words, expected_words_mapped in self.scenarios_map_words:
+            with self.subTest():
+                words_mapped = CharacterSetUtils().map_words(character_set_description, words)
+
+                self.assertEqual(expected_words_mapped, words_mapped)
 
 
 if __name__ == '__main__':
