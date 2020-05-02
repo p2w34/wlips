@@ -13,11 +13,11 @@ class WordListValidator:
     FILE_NAME_MAX_LENGTH = 255
     FILE_NAME_NUMBER_OF_SEGMENTS_MAX = 3
 
-    character_set = None
+    base_character_sets = None
     word_list = None
 
-    def __init__(self, character_set, word_list):
-        self.character_set = character_set
+    def __init__(self, base_character_sets, word_list):
+        self.base_character_sets = base_character_sets
         self.word_list = word_list
 
     def validate(self):
@@ -86,10 +86,10 @@ class WordListValidator:
         return True
 
     def is_character_set_valid(self):
-
+        # todo: is this method really correct? we should do the check in character_set, not base_character_sets
         for word in self.word_list.word_list:
             for c in word:
-                if c not in self.character_set:
+                if c not in self.base_character_sets:
                     return False
         return True
 

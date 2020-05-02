@@ -2,7 +2,7 @@ import argparse
 import sys
 import shutil
 
-from scripts.src.CharacterSetsReader import CharacterSetsReader
+from scripts.src.BaseCharacterSetsReader import CharacterSetsReader
 from scripts.src.WordListCreator import WordListCreator
 from scripts.src.FileHash import FileHash
 
@@ -14,10 +14,10 @@ parser.add_argument('-l', '--language', required=True)
 args = parser.parse_args()
 preliminary_word_list_path = "../wlip-0003/preliminary-word-lists/" + args.language
 
-character_sets = CharacterSetsReader().parse("../wlip-0001/character-sets/")
+base_character_sets = CharacterSetsReader().parse("../wlip-0001/base-character-sets/")
 word_list_creator = WordListCreator()
 try:
-    word_list = word_list_creator.create_word_list(preliminary_word_list_path, character_sets)
+    word_list = word_list_creator.create_word_list(preliminary_word_list_path, base_character_sets)
 except:
     print("error: unable to parse word list file: '{}'".format(preliminary_word_list_path))
     sys.exit(1)

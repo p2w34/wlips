@@ -3,9 +3,9 @@ import sys
 
 from scripts.src.WordListReader import WordListReader
 from scripts.src.WordListValidator import WordListValidator
-from scripts.src.CharacterSetsReader import CharacterSetsReader
+from scripts.src.BaseCharacterSetsReader import CharacterSetsReader
 
-CHARACTER_SETS_PATH = "../wlip-0001/character-sets/"
+BASE_CHARACTER_SETS_PATH = "../wlip-0001/base-character-sets/"
 
 parser = argparse.ArgumentParser(
     description="Validate word list",
@@ -15,7 +15,7 @@ parser.add_argument('-f', '--file', required=True)
 args = parser.parse_args()
 file_name = args.file
 
-base_character_sets = CharacterSetsReader().parse(CHARACTER_SETS_PATH)
+base_character_sets = CharacterSetsReader().parse(BASE_CHARACTER_SETS_PATH)
 word_list_reader = WordListReader()
 try:
     word_list = word_list_reader.parse_file(file_name)

@@ -17,8 +17,21 @@ class CharacterSetUtils:
 
         return result
 
-    def map_word(self, character_set, word):
-        mappings = character_set.mappings
+    def map_words(self, character_set_description, words):
+        words_mapped = {}
+        for word in words:
+            word_mapped = self.map_word(character_set_description, word)
+            word_mapped_values = words_mapped.get(word_mapped)
+            if word_mapped_values is None:
+                word_mapped_values = [word]
+            else:
+                word_mapped_values.append(word)
+            words_mapped.update({word_mapped: word_mapped_values})
+
+        return words_mapped
+
+    def map_word(self, character_set_description, word):
+        mappings = character_set_description.mappings
         if not mappings:
             return word
 

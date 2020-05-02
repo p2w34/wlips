@@ -8,7 +8,7 @@ class CharacterSetDescription:
 
     def __init__(self, character_set_description):
 
-        regex = r"^\[{}{}{}\]$".format(self.BASE_CHARACTER_SET_NAME_PATTERN,
+        regex = r"(?:.*)\[{}{}{}\](?:.*)".format(self.BASE_CHARACTER_SET_NAME_PATTERN,
                                        self.REDUNDANT_CHARACTER_SET_PATTERN,
                                        self.EXTRA_CHARACTER_SET_PATTERN)
         result = re.match(regex, character_set_description)

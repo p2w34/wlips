@@ -3,14 +3,20 @@ import sys
 
 from Levenshtein import distance
 
+from scripts.src.CharacterSetDescription import CharacterSetDescription
+from scripts.src.CharacterSetUtils import CharacterSetUtils
+
+
 class WordListCreator:
 
-    def create_word_list(self, file_path, character_sets):
+    def create_word_list(self, file_path, base_character_sets):
         self.validate_file_exists(file_path)
-        self.character_sets = character_sets
         lines = self.read_file(file_path)
         words = self.get_words(lines)
-        word_list = self.create_list(words)
+        character_set_description = CharacterSetDescription(lines[0])
+        words_mapped = CharacterSetUtils().map_words(character_set_description, words)
+        print("Words mapping with duplicates: ", words_mapped)
+        word_list = self.create_list(words_mapped.keys())
         return word_list
 
     def validate_file_exists(self, file_path):
@@ -30,7 +36,7 @@ class WordListCreator:
                 continue
             if line[0] == "#":
                 continue
-            words.append(line[:-1])
+            words = words + line[:-1].split(",")
 
         return words
 
