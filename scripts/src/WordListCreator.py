@@ -5,6 +5,8 @@ from Levenshtein import distance
 
 from scripts.src.CharacterSetDescription import CharacterSetDescription
 from scripts.src.CharacterSetUtils import CharacterSetUtils
+from scripts.src.FileHash import FileHash
+from scripts.src.WordList import WordList
 
 
 class WordListCreator:
@@ -16,8 +18,9 @@ class WordListCreator:
         character_set_description = CharacterSetDescription(lines[0])
         words_mapped = CharacterSetUtils().map_words(character_set_description, words)
         print("Words mapping with duplicates: ", words_mapped)
-        word_list = self.create_list(words_mapped.keys())
-        return word_list
+        list_of_words = self.create_list(words_mapped.keys())
+        file_hash = FileHash().compute_hash("[english]", list_of_words)
+        return WordList(CharacterSetDescription, list_of_words, file_hash)
 
     def validate_file_exists(self, file_path):
         if not os.path.isfile(file_path):
@@ -61,48 +64,38 @@ class WordListCreator:
     def create_map_of_neighbours(self, words):
         map_of_neighbours = {}
         for w in words:
-            list_of_neighbours = []
+            neighbors = set()
             for w2 in words:
                 if w != w2 and (distance(w[:4], w2[:4]) == 1 or w[:4] == w2[:4]):
-                    list_of_neighbours.append(w2)
-            map_of_neighbours.update({w: list_of_neighbours})
+                    neighbors.add(w2)
+            map_of_neighbours.update({w: neighbors})
 
         return map_of_neighbours
 
     def create_sets_of_neighbours(self, map_of_neighbours):
-        result = set()
-        for word in map_of_neighbours.keys():
-            if len(map_of_neighbours.get(word)) == 0:
-                result.add(frozenset([word]))
+        sets_of_neighbours = set()
+        for k, v in map_of_neighbours.items():
+            new_set_of_neighbours = v
+            new_set_of_neighbours.add(k)
+            sets_of_neighbours = self.__expand_sets_of_neighbours(sets_of_neighbours, new_set_of_neighbours)
 
-        return result
+        return sets_of_neighbours
 
-        # result = set()
-        #
-        # for key in map_of_neighbours.keys():
-        #     result.add(frozenset([key]))
-        #
-        # joins_performed = True
-        #
-        # while joins_performed == True and len(result) > 1:
-        #     joins_performed = False
-        #     a = result.pop()
-        #     sets_to_join_with = set()
-        #     for b in result:
-        #         for element_a in a:
-        #             for element_b in b:
-        #                 if element_a in map_of_neighbours.get(element_b):
-        #                     sets_to_join_with.add(b)
-        #                     joins_performed = True
-        #
-        #     set_to_add = set().union(a)
-        #     for set_to_remove in sets_to_join_with:
-        #         result.remove(set_to_remove)
-        #         set_to_add = set_to_add.union(set_to_remove)
-        #
-        #     result.add(frozenset(set_to_add))
+    def __expand_sets_of_neighbours(self, sets_of_neighbours, new_set_of_neighbours):
+        temp_sets = set()
+        for current_set in sets_of_neighbours:
+            for word in current_set:
+                if word in new_set_of_neighbours:
+                    new_set_of_neighbours = new_set_of_neighbours.union(current_set)
+                    temp_sets.add(current_set)
+                    break
 
-        # return result
+        for temp_set in temp_sets:
+            sets_of_neighbours.remove(temp_set)
+
+        sets_of_neighbours.add(frozenset(new_set_of_neighbours))
+
+        return sets_of_neighbours
 
     def get_word_list(self, sets_of_neighbours):
         word_list = []

@@ -1,10 +1,8 @@
 import argparse
 import sys
-import shutil
 
 from scripts.src.BaseCharacterSetsReader import CharacterSetsReader
 from scripts.src.WordListCreator import WordListCreator
-from scripts.src.FileHash import FileHash
 
 parser = argparse.ArgumentParser(
     description="Create word list based on the preliminary word list",
@@ -23,14 +21,11 @@ except:
     sys.exit(1)
 
 print("Created word list:\n")
-print(word_list)
+print(word_list.word_list)
 
-with open("temp_word_list", "w") as f:
-    for word in word_list:
+with open("../wlip-0003/word-lists/" + args.language + "-" + word_list.file_hash_info, "w") as f:
+    f.write("[english]" + '\n')
+    for word in word_list.word_list:
         f.write(word + '\n')
-
-file_hash = FileHash().compute_file_hash("temp_word_list")
-word_list_path = "../wlip-0003/word-lists/" + args.language + "-" + file_hash
-shutil.move("temp_word_list", word_list_path)
 
 sys.exit(0)

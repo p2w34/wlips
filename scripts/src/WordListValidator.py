@@ -43,9 +43,9 @@ class WordListValidator:
 
         neo4j_graph_input = self.get_neo4j_graph_with_levenshtein_distances()
         if not neo4j_graph_input:
-            print("[+] Levenshtein distance at least once")
+            print("[+] Levenshtein distance > 1")
         else:
-            print("[-] Levenshtein distance at least once - find neo4j input below:")
+            print("[-] Levenshtein distance > 1. Find neo4j input below:")
             is_word_list_valid = False
             for line in neo4j_graph_input:
                 print(line)
