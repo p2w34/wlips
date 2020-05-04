@@ -24,7 +24,7 @@ print("Created word list:\n")
 print(word_list.word_list)
 
 with open("../wlip-0003/word-lists/" + args.language + "-" + word_list.file_hash_info, "w") as f:
-    f.write("[english]" + '\n')
+    f.write(word_list.character_set_description.description + '\n')
     for word in word_list.word_list:
         f.write(word + '\n')
 

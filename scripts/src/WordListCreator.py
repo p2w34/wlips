@@ -20,7 +20,7 @@ class WordListCreator:
         print("Words mapping with duplicates: ", words_mapped)
         list_of_words = self.create_list(words_mapped.keys())
         file_hash = FileHash().compute_hash("[english]", list_of_words)
-        return WordList(CharacterSetDescription, list_of_words, file_hash)
+        return WordList(character_set_description, list_of_words, file_hash)
 
     def validate_file_exists(self, file_path):
         if not os.path.isfile(file_path):
