@@ -8,26 +8,25 @@ class CharacterSetDescription:
 
     def __init__(self, character_set_description):
 
-        regex = r"(?:.*)\[{}{}{}\](?:.*)".format(self.BASE_CHARACTER_SET_NAME_PATTERN,
+        regex = r"(?:.*)(\[{}{}{}\])(?:.*)".format(self.BASE_CHARACTER_SET_NAME_PATTERN,
                                        self.REDUNDANT_CHARACTER_SET_PATTERN,
                                        self.EXTRA_CHARACTER_SET_PATTERN)
         result = re.match(regex, character_set_description)
-        if result is None:
+        if result is None or result.group(2) is None:
             raise Exception("invalid character set description")
 
-        base_character_set_name = result.group(1)
-        if base_character_set_name is None:
-            raise Exception("invalid character set description")
+        base_character_set_name = result.group(2)
 
         redundant_character_set = []
-        if result.group(2) is not None:
-            redundant_character_set = list(result.group(2)[1:])
+        if result.group(3) is not None:
+            redundant_character_set = list(result.group(3)[1:])
 
         mappings = {}
-        if result.group(3) is not None:
-            mappings_candidates = result.group(3).split('+')[1:]
+        if result.group(4) is not None:
+            mappings_candidates = result.group(4).split('+')[1:]
             mappings = dict(zip([k[0] for k in mappings_candidates], [v[2] for v in mappings_candidates]))
 
+        self.description = result.group(1)
         self.base_character_set = base_character_set_name
         self.redundant_character_set = redundant_character_set
         self.mappings = mappings

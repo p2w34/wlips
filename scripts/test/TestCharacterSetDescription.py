@@ -6,21 +6,22 @@ from scripts.src.CharacterSetDescription import CharacterSetDescription
 
 class TestCharacterSet(unittest.TestCase):
     correct_character_set_description = [
-        ("[english]", "english", [], {}),
-        ("some random letters before [english]", "english", [], {}),
-        ("[english] some random letters after", "english", [], {}),
-        ("# some random letters before [english] and after", "english", [], {}),
-        ("[english+ą:a]", "english", [], {"ą": "a"}),
-        ("[english-q]", "english", ['q'], {}),
-        ("[english-qv]", "english", ['q', 'v'], {}),
-        ("[english-qvx]", "english", ['q', 'v', 'x'], {}),
-        ("[english-qvx+ą:a]", "english", ['q', 'v', 'x'], {"ą": "a"}),
-        ("[english-qvx+ą:a+ć:c]", "english", ['q', 'v', 'x'], {"ą": "a", "ć": "c"}),
-        ("[english-qvx+ą:a+ć:c+ę:e]", "english", ['q', 'v', 'x'], {"ą": "a", "ć": "c", "ę": "e"})
+        ("[english]", "[english]", "english", [], {}),
+        ("some random letters before [english]", "[english]", "english", [], {}),
+        ("[english] some random letters after", "[english]", "english", [], {}),
+        ("# some random letters before [english] and after", "[english]", "english", [], {}),
+        ("[english+ą:a]", "[english+ą:a]", "english", [], {"ą": "a"}),
+        ("[english-q]", "[english-q]", "english", ['q'], {}),
+        ("[english-qv]", "[english-qv]", "english", ['q', 'v'], {}),
+        ("[english-qvx]", "[english-qvx]", "english", ['q', 'v', 'x'], {}),
+        ("[english-qvx+ą:a]", "[english-qvx+ą:a]", "english", ['q', 'v', 'x'], {"ą": "a"}),
+        ("[english-qvx+ą:a+ć:c]", "[english-qvx+ą:a+ć:c]", "english", ['q', 'v', 'x'], {"ą": "a", "ć": "c"}),
+        ("[english-qvx+ą:a+ć:c+ę:e]", "[english-qvx+ą:a+ć:c+ę:e]", "english", ['q', 'v', 'x'], {"ą": "a", "ć": "c", "ę": "e"})
     ]
 
     def test_correct_character_set_description(self):
         for character_set_description, \
+            expected_description, \
             expected_base_character_set, \
             expected_redundant_character_set, \
             expected_mappings \
@@ -28,6 +29,7 @@ class TestCharacterSet(unittest.TestCase):
             with self.subTest():
                 character_set = CharacterSetDescription(character_set_description)
 
+                self.assertEqual(expected_description, character_set.description)
                 self.assertEqual(expected_base_character_set, character_set.base_character_set)
                 self.assertListEqual(expected_redundant_character_set, character_set.redundant_character_set)
                 self.assertEqual(expected_mappings, character_set.mappings)
