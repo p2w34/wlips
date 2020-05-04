@@ -33,6 +33,7 @@ class CharacterSetDescription:
 
     def __eq__(self, other):
 
-        return self.base_character_set == other.base_character_set \
+        return self.description == other.description \
+               and self.base_character_set == other.base_character_set \
                and self.redundant_character_set == other.redundant_character_set \
                and self.mappings == other.mappings
