@@ -6,6 +6,7 @@ from Levenshtein import distance
 from scripts.src.CharacterSetDescription import CharacterSetDescription
 from scripts.src.CharacterSetUtils import CharacterSetUtils
 from scripts.src.FileHash import FileHash
+from scripts.src.GraphUtils import GraphUtils
 from scripts.src.WordList import WordList
 
 
@@ -54,11 +55,9 @@ class WordListCreator:
 
         map_of_neighbours = self.create_map_of_neighbours(words2)
         print("Map of neighbours: ", map_of_neighbours)
-        sets_of_neighbours = self.create_sets_of_neighbours(map_of_neighbours)
-        print("Sets of neighbours: ", sets_of_neighbours)
-        print("Number of sets of neighbours: ", len(sets_of_neighbours))
-        word_list = self.get_word_list(sets_of_neighbours)
-        print("Word list: ", word_list)
+        word_set = GraphUtils().extract_set_without_neighbours(map_of_neighbours)
+        word_list = list(word_set)
+        word_list.sort()
         return word_list
 
     def create_map_of_neighbours(self, words):
@@ -71,39 +70,3 @@ class WordListCreator:
             map_of_neighbours.update({w: neighbors})
 
         return map_of_neighbours
-
-    def create_sets_of_neighbours(self, map_of_neighbours):
-        sets_of_neighbours = set()
-        for k, v in map_of_neighbours.items():
-            new_set_of_neighbours = v
-            new_set_of_neighbours.add(k)
-            sets_of_neighbours = self.__expand_sets_of_neighbours(sets_of_neighbours, new_set_of_neighbours)
-
-        return sets_of_neighbours
-
-    def __expand_sets_of_neighbours(self, sets_of_neighbours, new_set_of_neighbours):
-        temp_sets = set()
-        for current_set in sets_of_neighbours:
-            for word in current_set:
-                if word in new_set_of_neighbours:
-                    new_set_of_neighbours = new_set_of_neighbours.union(current_set)
-                    temp_sets.add(current_set)
-                    break
-
-        for temp_set in temp_sets:
-            sets_of_neighbours.remove(temp_set)
-
-        sets_of_neighbours.add(frozenset(new_set_of_neighbours))
-
-        return sets_of_neighbours
-
-    def get_word_list(self, sets_of_neighbours):
-        word_list = []
-        for set_of_neighbours in sets_of_neighbours:
-            if len(set_of_neighbours) == 1:
-                word_list.append(next(iter(set_of_neighbours)))
-            else:
-                1 == 1
-                # to implement: word_list.append(split_neighbours(set_of_neighbours))
-        word_list.sort()
-        return word_list
