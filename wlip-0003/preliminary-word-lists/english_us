@@ -26,6 +26,7 @@
 # group: music (instruments)
 # group: music (voices)
 # group: professions
+# group: religion
 # group: school
 # group: shopping
 # group: sports
@@ -40,6 +41,7 @@
 # group: animals
 alligator
 animal
+ant
 badger
 bat
 bear
@@ -81,6 +83,7 @@ leopard
 lion
 lizard
 lobster
+mockingbird
 mole
 monkey
 mouse
@@ -89,6 +92,7 @@ otter
 ox
 oyster
 panda
+penguin
 pig
 puppy
 rabbit
@@ -113,7 +117,9 @@ whale
 wolf
 
 # group: astronomy
+antenna
 astronaut
+asteroid
 comet
 constellation
 cosmonaut
@@ -121,10 +127,16 @@ cosmos
 crater
 galaxy
 gravity
+lander
+light
+matter
 moon
+navigation
 orbit
 planet
 probe
+propulsion
+radiation
 rocket
 satellite
 sky
@@ -132,8 +144,12 @@ space
 star
 sun
 telescope
+thruster
+trajectory
 universe
 vacuum
+velocity
+wave
 zodiac
 
 # group: birds
@@ -272,6 +288,7 @@ authorization
 brand
 budget
 business
+chairman
 commission
 company
 comparison
@@ -280,6 +297,7 @@ confirmation
 cost
 credit
 custom
+currency
 deadline
 debt
 decision
@@ -337,6 +355,7 @@ rise
 risk
 salary
 sales
+savings
 schedule
 share
 signature
@@ -1179,6 +1198,16 @@ spy
 steward
 translator
 writer
+
+# group: religion
+angel
+Cross
+eternity
+Eucharist
+God
+haeven
+mercy
+reconcilliation
 
 # group: school
 answer
