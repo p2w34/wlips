@@ -1,13 +1,12 @@
 import os
 import sys
 
-from Levenshtein import distance
-
 from scripts.src.CharacterSetDescription import CharacterSetDescription
 from scripts.src.CharacterSetUtils import CharacterSetUtils
 from scripts.src.FileHash import FileHash
 from scripts.src.GraphUtils import GraphUtils
 from scripts.src.WordList import WordList
+from scripts.src.WordNeighbourhoodStrategy import WordNeighbourhoodStrategy
 
 
 class WordListCreator:
@@ -53,20 +52,10 @@ class WordListCreator:
                 words2.append(w)
         print("Number of words with 4-8 chars: ", len(words2))
 
-        map_of_neighbours = self.create_map_of_neighbours(words2)
+        graph_utils = GraphUtils(WordNeighbourhoodStrategy())
+        map_of_neighbours = graph_utils.create_map_of_neighbours(words2)
         print("Map of neighbours: ", map_of_neighbours)
-        word_set = GraphUtils().extract_set_without_neighbours(map_of_neighbours)
+        word_set = graph_utils.extract_set_without_neighbours(map_of_neighbours)
         word_list = list(word_set)
         word_list.sort()
         return word_list
-
-    def create_map_of_neighbours(self, words):
-        map_of_neighbours = {}
-        for w in words:
-            neighbors = set()
-            for w2 in words:
-                if w != w2 and (distance(w[:4], w2[:4]) == 1 or w[:4] == w2[:4]):
-                    neighbors.add(w2)
-            map_of_neighbours.update({w: neighbors})
-
-        return map_of_neighbours

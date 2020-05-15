@@ -1,10 +1,24 @@
 class GraphUtils:
 
+    def __init__(self, neighbourhood_strategy):
+        self.neighbourhood_strategy = neighbourhood_strategy
+
+    def create_map_of_neighbours(self, words):
+        map_of_neighbours = {}
+        for w in words:
+            neighbors = set()
+            for w2 in words:
+                if self.neighbourhood_strategy.is_neighbours(w, w2):
+                    neighbors.add(w2)
+            map_of_neighbours.update({w: neighbors})
+
+        return map_of_neighbours
+
     def extract_set_without_neighbours(self, map_of_neighbours):
         sets_of_neighbours = self.create_sets_of_neighbours(map_of_neighbours)
         print("Sets of neighbours: ", sets_of_neighbours)
         print("Number of sets of neighbours: ", len(sets_of_neighbours))
-        word_set = self.get_word_set(sets_of_neighbours)
+        word_set = self.extract_largest_set_without_neighbours(sets_of_neighbours)
         print("Word set: ", word_set)
         return word_set
 
@@ -34,7 +48,7 @@ class GraphUtils:
         return sets_of_neighbours
 
     # this is just a very basic stub and needs to be implemented properly
-    def get_word_set(self, sets_of_neighbours):
+    def extract_largest_set_without_neighbours(self, sets_of_neighbours):
         word_set = set()
         for set_of_neighbours in sets_of_neighbours:
             if len(set_of_neighbours) == 1:
