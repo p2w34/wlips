@@ -1,5 +1,5 @@
 import argparse
-from scripts.src.FileHash import FileHash
+from scripts.src.file.FileHash import FileHash
 
 parser = argparse.ArgumentParser(
     description="Calculate SHA-3 hash of a file in hex form and outputs least significant 8 characters.",

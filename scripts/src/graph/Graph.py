@@ -1,4 +1,4 @@
-class GraphUtils:
+class Graph:
 
     def __init__(self, neighbourhood_strategy):
         self.neighbourhood_strategy = neighbourhood_strategy
