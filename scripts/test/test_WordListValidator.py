@@ -8,7 +8,7 @@ from scripts.test.TestConstants import CHARACTER_SET_DESCRIPTION_EMPTY, CHARACTE
     CHARACTER_SET_DESCRIPTION_ENGLISH, CHARACTER_SET_POLISH
 
 
-class TestWordListValidator(unittest.TestCase):
+class test_WordListValidator(unittest.TestCase):
 
     incorrect_scenarios_file_name = [
         ["12345678", "just_language_name_without_hash"],

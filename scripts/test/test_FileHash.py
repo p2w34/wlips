@@ -2,13 +2,15 @@
 import unittest
 
 from scripts.src.FileHash import FileHash
+from scripts.test import sample_word_list_path
 
-class TestFileHash(unittest.TestCase):
+
+class test_FileHash(unittest.TestCase):
 
     expected_hash = "3b784e25"
 
     def test_compute_file_hash(self):
-        file_hash = FileHash().compute_file_hash("./sample_word_list")
+        file_hash = FileHash().compute_file_hash(sample_word_list_path)
         self.assertEqual(self.expected_hash, file_hash)
 
     def test_compute_hash(self):

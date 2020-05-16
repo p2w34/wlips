@@ -4,7 +4,7 @@ import unittest
 from scripts.src.CharacterSetDescription import CharacterSetDescription
 
 
-class TestCharacterSet(unittest.TestCase):
+class test_CharacterSetDescription(unittest.TestCase):
     correct_character_set_description = [
         ("[english]", "[english]", "english", [], {}),
         ("some random letters before [english]", "[english]", "english", [], {}),

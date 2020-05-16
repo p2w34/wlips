@@ -3,15 +3,16 @@ import unittest
 
 from scripts.src.WordListReader import WordListReader
 from scripts.src.WordList import WordList
-from scripts.test.TestCharacterSetUtils import CHARACTER_SET_DESCRIPTION_POLISH
+from scripts.test import sample_word_list_path
+from scripts.test.test_CharacterSetUtils import CHARACTER_SET_DESCRIPTION_POLISH
 
 
-class TestWordListReader(unittest.TestCase):
+class test_WordListReader(unittest.TestCase):
 
     SAMPLE_WORD_LIST = "sample_word_list"
 
     def test_correct_validate_file_exists(self):
-        WordListReader().validate_file_exists(self.SAMPLE_WORD_LIST)
+        WordListReader().validate_file_exists(sample_word_list_path)
 
     def test_incorrect_validate_file_exists(self):
         NON_EXISTING_WORD_LIST = "non_existing_word_list"
@@ -20,7 +21,7 @@ class TestWordListReader(unittest.TestCase):
 
     def test_get_file_hash_info(self):
         expected_file_hash_info = {"3b784e25": self.SAMPLE_WORD_LIST}
-        file_hash_info = WordListReader().get_file_hash_info(self.SAMPLE_WORD_LIST)
+        file_hash_info = WordListReader().get_file_hash_info(sample_word_list_path)
         self.assertEqual(file_hash_info, expected_file_hash_info)
 
     def test_read_file(self):
@@ -30,7 +31,7 @@ class TestWordListReader(unittest.TestCase):
             "banan\n",
             "tygrys\n"
         ]
-        lines = WordListReader().read_file(self.SAMPLE_WORD_LIST)
+        lines = WordListReader().read_file(sample_word_list_path)
         self.assertListEqual(expected_lines, lines)
 
     correct_scenarios_lines = [
@@ -61,7 +62,7 @@ class TestWordListReader(unittest.TestCase):
         EXPECTED_WORD_LIST = WordList(CHARACTER_SET_DESCRIPTION_POLISH,
                                       ["awokado", "banan", "tygrys"],
                                       {"3b784e25": self.SAMPLE_WORD_LIST})
-        word_list = WordListReader().parse_file(self.SAMPLE_WORD_LIST)
+        word_list = WordListReader().parse_file(sample_word_list_path)
         self.assertEqual(EXPECTED_WORD_LIST, word_list)
 
 if __name__ == '__main__':
