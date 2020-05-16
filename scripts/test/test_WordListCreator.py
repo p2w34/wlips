@@ -3,7 +3,7 @@ import unittest
 
 from scripts.src.WordListCreator import WordListCreator
 
-class TestWordListCreator(unittest.TestCase):
+class test_WordListCreator(unittest.TestCase):
 
     scenarios_get_words = [
         ([], []),

@@ -6,7 +6,7 @@ from scripts.test.TestConstants import BASE_CHARACTER_SETS, CHARACTER_SET_DESCRI
     CHARACTER_SET_ENGLISH, CHARACTER_SET_DESCRIPTION_POLISH, CHARACTER_SET_POLISH
 
 
-class TestCharacterSetUtils(unittest.TestCase):
+class test_CharacterSetUtils(unittest.TestCase):
 
     correct_scenarios_character_set = [
         [BASE_CHARACTER_SETS,

@@ -5,7 +5,7 @@ from scripts.src.GraphUtils import GraphUtils
 from scripts.src.WordNeighbourhoodStrategy import WordNeighbourhoodStrategy
 
 
-class TestGraphUtils(unittest.TestCase):
+class test_GraphUtils(unittest.TestCase):
 
     scenarios_create_map_of_neighbours = [
         (["aaaa"], {"aaaa": set()}),
