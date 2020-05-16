@@ -46,16 +46,14 @@ class WordListCreator:
     def create_list(self, words):
         print("Number of all words: ", len(words))
 
-        words2 = []
+        words2 = set()
         for w in words:
             if len(w) >= 4 and len(w) <=8:
-                words2.append(w)
+                words2.add(w)
         print("Number of words with 4-8 chars: ", len(words2))
 
         graph_utils = GraphUtils(WordNeighbourhoodStrategy())
-        map_of_neighbours = graph_utils.create_map_of_neighbours(words2)
-        print("Map of neighbours: ", map_of_neighbours)
-        word_set = graph_utils.extract_set_without_neighbours(map_of_neighbours)
+        word_set = graph_utils.extract_largest_set_without_neighbours_from_raw_set(words2)
         word_list = list(word_set)
         word_list.sort()
         return word_list

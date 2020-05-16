@@ -38,7 +38,7 @@ class TestGraphUtils(unittest.TestCase):
             with self.subTest():
                 self.assertEqual(
                     expected_sets_of_neighbours,
-                    GraphUtils(WordNeighbourhoodStrategy()).create_sets_of_neighbours(map_of_neighbours)
+                    GraphUtils(WordNeighbourhoodStrategy()).split_into_isolated_sets_of_neighbours(map_of_neighbours)
                 )
 
 
