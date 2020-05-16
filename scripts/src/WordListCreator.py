@@ -3,8 +3,8 @@ import sys
 
 from scripts.src.CharacterSetDescription import CharacterSetDescription
 from scripts.src.CharacterSetUtils import CharacterSetUtils
-from scripts.src.FileHash import FileHash
-from scripts.src.GraphUtils import GraphUtils
+from scripts.src.file.FileHash import FileHash
+from scripts.src.graph.Graph import Graph
 from scripts.src.WordList import WordList
 from scripts.src.WordNeighbourhoodStrategy import WordNeighbourhoodStrategy
 
@@ -52,7 +52,7 @@ class WordListCreator:
                 words2.add(w)
         print("Number of words with 4-8 chars: ", len(words2))
 
-        graph_utils = GraphUtils(WordNeighbourhoodStrategy())
+        graph_utils = Graph(WordNeighbourhoodStrategy())
         word_set = graph_utils.extract_largest_set_without_neighbours_from_raw_set(words2)
         word_list = list(word_set)
         word_list.sort()

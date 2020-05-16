@@ -1,7 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import unittest
 
-from scripts.src.FileHash import FileHash
+from scripts.src.file.FileHash import FileHash
 from scripts.test import sample_word_list_path
 
 

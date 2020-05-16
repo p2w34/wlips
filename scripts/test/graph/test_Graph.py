@@ -1,11 +1,11 @@
 # This Python file uses the following encoding: utf-8
 import unittest
 
-from scripts.src.GraphUtils import GraphUtils
+from scripts.src.graph.Graph import Graph
 from scripts.src.WordNeighbourhoodStrategy import WordNeighbourhoodStrategy
 
 
-class test_GraphUtils(unittest.TestCase):
+class test_Graph(unittest.TestCase):
 
     scenarios_create_map_of_neighbours = [
         (["aaaa"], {"aaaa": set()}),
@@ -18,7 +18,7 @@ class test_GraphUtils(unittest.TestCase):
             with self.subTest():
                 self.assertEqual(
                     expected_map_of_neighbours,
-                    GraphUtils(WordNeighbourhoodStrategy()).create_map_of_neighbours(words)
+                    Graph(WordNeighbourhoodStrategy()).create_map_of_neighbours(words)
                 )
 
     scenarios_create_sets_of_neighbours = [
@@ -38,7 +38,7 @@ class test_GraphUtils(unittest.TestCase):
             with self.subTest():
                 self.assertEqual(
                     expected_sets_of_neighbours,
-                    GraphUtils(WordNeighbourhoodStrategy()).split_into_isolated_sets_of_neighbours(map_of_neighbours)
+                    Graph(WordNeighbourhoodStrategy()).split_into_isolated_sets_of_neighbours(map_of_neighbours)
                 )
 
 
