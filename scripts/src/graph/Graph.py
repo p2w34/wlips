@@ -56,11 +56,33 @@ class Graph:
             word_set.update(word_subset)
         return word_set
 
-    # This is just a very basic stub and needs to be implemented properly.
-    # I suppose it is not possible to present the ideal implementation as for me it look like NP hard problem.
-    # However, one should be easily able to refactor it to increase size of the extracted set.
+    # This is just a very basic implementation.
+    # Supposedly, it is not possible to present the ideal implementation as it looks like NP hard problem.
+    # However, one should be able to refactor it to yield larger set. Or at least to run it way faster.
     def extract_largest_set_without_neighbours_from_set(self, set_of_neighbours):
-        if len(set_of_neighbours) == 1:
+        word, max_number_of_neighbours = self.__get_first_word_with_max_number_of_neighbours(set_of_neighbours)
+        if max_number_of_neighbours == 0:
             return set_of_neighbours
-        else:
-            return set()
+
+        temp_set_of_neighbours = set()
+        for a in set_of_neighbours:
+            temp_set_of_neighbours.add(a)
+
+        while max_number_of_neighbours > 0:
+            temp_set_of_neighbours.remove(word)
+            word, max_number_of_neighbours = self.__get_first_word_with_max_number_of_neighbours(temp_set_of_neighbours)
+
+        return temp_set_of_neighbours
+
+    def __get_first_word_with_max_number_of_neighbours(self, set_of_neighbours):
+        map_of_neighbours = self.create_map_of_neighbours(set_of_neighbours)
+        list_of_words_sorted = sorted(map_of_neighbours.keys())
+        result = list_of_words_sorted[0]
+        max_number_of_neighbours = len(map_of_neighbours.get(result))
+        for word in list_of_words_sorted[1:]:
+            temp = len(map_of_neighbours.get(word))
+            if temp > max_number_of_neighbours:
+                max_number_of_neighbours = temp
+                result = word
+
+        return result, max_number_of_neighbours
