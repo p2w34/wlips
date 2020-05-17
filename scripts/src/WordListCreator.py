@@ -52,8 +52,15 @@ class WordListCreator:
                 words2.add(w)
         print("Number of words with 4-8 chars: ", len(words2))
 
+        words3 = self.extract_words_with_unique_first_4_characters(words2)
+
         graph_utils = Graph(WordNeighbourhoodStrategy())
-        word_set = graph_utils.extract_largest_set_without_neighbours_from_raw_set(words2)
+        word_set = graph_utils.extract_largest_set_without_neighbours_from_raw_set(words3)
         word_list = list(word_set)
         word_list.sort()
         return word_list
+
+    def extract_words_with_unique_first_4_characters(self, word_set):
+        # todo: implement so that if there is more than one word with the same four characters,
+        # one of the shortest is chosen
+        return word_set
