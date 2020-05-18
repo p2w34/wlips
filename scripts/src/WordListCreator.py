@@ -61,6 +61,17 @@ class WordListCreator:
         return word_list
 
     def extract_words_with_unique_first_4_characters(self, word_set):
-        # todo: implement so that if there is more than one word with the same four characters,
-        # one of the shortest is chosen
-        return word_set
+        result = set()
+        word_map = {}
+        for w in word_set:
+            same_first_4_characters = word_map.get(w[:4])
+            if same_first_4_characters == None:
+                word_map[w[:4]] = [w]
+            else:
+                same_first_4_characters.append(w)
+                word_map[w[:4]] = sorted(same_first_4_characters)
+
+        for candidates in word_map.values():
+            result.add(candidates[0])
+
+        return result
