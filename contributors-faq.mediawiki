@@ -47,6 +47,6 @@ Why? It is because:
 * <p>one should not recognize lists not by a single word, but by an industry-standard solution:
 using hashes (it is part of WLIP-0002 proposal).
 Thanks to it even multiple lists for a single language may coexist.
-For example, the current English list and hopefully a newer one, fulfilling new requirements,
-+ one should use it as an advantage - the more words shared across the lists, the easier to create them.
-Also, the number of commonly shared words should not be limited - the more the better.
+For example, the current English list and hopefully a newer one, fulfilling new requirements,</p>
+* <p>one should use it as an advantage - the more words shared across the lists, the easier to create them.
+Also, the number of commonly shared words should not be limited - the more the better.</p>
