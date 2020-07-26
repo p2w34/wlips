@@ -12,12 +12,12 @@ Let's first add ~5k words (they should be manually chosen):
 * common nouns and adjectives known to everyone; they should come from some kind of widely accepted source (well-known dictionaries)
 * it does not matter that some words might be less known in some of the countries (for example animals or fruits),
 * avoid words from groups like religion, i.e. words which might lead to some unnecessary discussions,
-* <p> it is OK if some people especially children would not understand some of them,
-but it should not 'put in trouble' (no embarrassing words) people who know the meaning and are asked for an explanation.
-This is a vague definition but there is no point to try to better define such words.
-When in doubt, please simply come up with another word.</p>
+* <p>it is OK if some people especially children would not understand some of them,
+    but it should not 'put in trouble' (no embarrassing words) people who know the meaning and are asked for an explanation.
+    This is a vague definition but there is no point to try to better define such words.
+    When in doubt, please simply come up with another word.</p>
 * <p>hopefully grouping them by category will help; let's keep order (may be simply alphabetical) within each such group;
-feel free to add more groups.</p>
+    feel free to add more groups.</p>
 
 Preliminary word list creation is a prerequisite to start work on the word lists.
 
@@ -46,8 +46,8 @@ Why? It is because:
 * which words will be most likely duplicated? the ones which are the most common,
 * with each new list, the task of choosing words will be harder and harder,
 * <p>one should not recognize lists not by a single word, but by an industry-standard solution:
-using hashes (it is part of WLIP-0002 proposal).
-Thanks to it even multiple lists for a single language may coexist.
-For example, the current English list and hopefully a newer one, fulfilling new requirements,</p>
+    using hashes (it is part of WLIP-0002 proposal).
+    Thanks to it even multiple lists for a single language may coexist.
+    For example, the current English list and hopefully a newer one, fulfilling new requirements,</p>
 * <p>one should use it as an advantage - the more words shared across the lists, the easier to create them.
-Also, the number of commonly shared words should not be limited - the more the better.</p>
+    Also, the number of commonly shared words should not be limited - the more the better.</p>
