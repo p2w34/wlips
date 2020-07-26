@@ -1,4 +1,4 @@
-<pre>
+ <pre>
 Currently, this repository is still in its infancy.
 Contributors are asked to focus on extending preliminary_word_list.
 Please see more info below under "How can I contribute" question.
@@ -27,8 +27,10 @@ Again, this repo is still in its infancy. The work should progress as follows:
 * for each language:
 ** translate preliminary_word_list
 ** create a draft of the word list by extracting words fulfilling requirements; this can be automated using the script:
-  `python3 scripts/create_word_list.py -l translated_preliminary_word_list`
-** manually polish the list
+  `python3 scripts/create_word_list.py -l translated_preliminary_word_list`  
+** <p>manually polish the list.
+   At the moment of writing, the preliminary word list consists of 1394 words. The script to extract a set of words fulfilling the requirements (with simply: /      /usr/bin/python3.6 scripts/create_word_list.py -l english_us) produces a draft of list with 859 words.
+   The longer the list, the higher the shrinkage. The shrinkage will vary across languages. There is no guarantee that preliminary_word_list of length ~5k or        (let the imagination fly) even 100k will suffice to provide 2048 words or more. However, as part of the final polishing, one can add manually missing words.      Adding just missing words is easier than creating all of them from scratch.</p>
 
 ==When can I expect language_x to be added?==
 After the creation of [[wlip-0003/preliminary-word-lists/english_us|preliminary word list]] things should speed up.
