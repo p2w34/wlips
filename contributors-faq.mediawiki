@@ -1,4 +1,4 @@
- <pre>
+<pre>
 Currently, this repository is still in its infancy.
 Contributors are asked to focus on extending preliminary_word_list.
 Please see more info below under "How can I contribute" question.
@@ -12,12 +12,8 @@ Let's first add ~5k words (they should be manually chosen):
 * common nouns and adjectives known to everyone; they should come from some kind of widely accepted source (well-known dictionaries)
 * it does not matter that some words might be less known in some of the countries (for example animals or fruits),
 * avoid words from groups like religion, i.e. words which might lead to some unnecessary discussions,
-* <p>it is OK if some people especially children would not understand some of them,
-    but it should not 'put in trouble' (no embarrassing words) people who know the meaning and are asked for an explanation.
-    This is a vague definition but there is no point to try to better define such words.
-    When in doubt, please simply come up with another word.</p>
-* <p>hopefully grouping them by category will help; let's keep order (may be simply alphabetical) within each such group;
-    feel free to add more groups.</p>
+* <p>it is OK if some people especially children would not understand some of them, but it should not 'put in trouble' (no embarrassing words) people who know the meaning and are asked for an explanation. This is a vague definition but there is no point to try to better define such words. When in doubt, please simply come up with another word.</p>
+* <p>hopefully grouping them by category will help; let's keep order (may be simply alphabetical) within each such group; feel free to add more groups.</p>
 
 Preliminary word list creation is a prerequisite to start work on the word lists.
 
@@ -27,10 +23,8 @@ Again, this repo is still in its infancy. The work should progress as follows:
 * for each language:
 ** translate preliminary_word_list
 ** create a draft of the word list by extracting words fulfilling requirements; this can be automated using the script:
-  `python3 scripts/create_word_list.py -l translated_preliminary_word_list`  
-** <p>manually polish the list.
-   At the moment of writing, the preliminary word list consists of 1394 words. The script to extract a set of words fulfilling the requirements (with simply: /      /usr/bin/python3.6 scripts/create_word_list.py -l english_us) produces a draft of list with 859 words.
-   The longer the list, the higher the shrinkage. The shrinkage will vary across languages. There is no guarantee that preliminary_word_list of length ~5k or        (let the imagination fly) even 100k will suffice to provide 2048 words or more. However, as part of the final polishing, one can add manually missing words.      Adding just missing words is easier than creating all of them from scratch.</p>
+   <code>python3 scripts/create_word_list.py -l translated_preliminary_word_list</code>
+** <p>manually polish the list. At the moment of writing, the ''preliminary_word_list'' consists of 1394 words. The script to extract a set of words fulfilling the requirements (with simply: ''/usr/bin/python3.6 scripts/create_word_list.py -l english_us'') produces a draft of list with 859 words. The longer the list, the higher the shrinkage. The shrinkage will vary across languages. There is no guarantee that ''preliminary_word_list'' of length ~5k or (let the imagination fly) even 100k will suffice to provide 2048 words or more. However, as part of the final polishing, one can add manually missing words. Adding just missing words is easier than creating all of them from scratch.</p>
 
 ==When can I expect language_x to be added?==
 After the creation of [[wlip-0003/preliminary-word-lists/english_us|preliminary word list]] things should speed up.
@@ -47,9 +41,5 @@ However, it would cause more problems than benefits.
 Why? It is because:
 * which words will be most likely duplicated? the ones which are the most common,
 * with each new list, the task of choosing words will be harder and harder,
-* <p>one should not recognize lists not by a single word, but by an industry-standard solution:
-    using hashes (it is part of WLIP-0002 proposal).
-    Thanks to it even multiple lists for a single language may coexist.
-    For example, the current English list and hopefully a newer one, fulfilling new requirements,</p>
-* <p>one should use it as an advantage - the more words shared across the lists, the easier to create them.
-    Also, the number of commonly shared words should not be limited - the more the better.</p>
+* <p>one should not recognize lists not by a single word, but by an industry-standard solution: using hashes (it is part of WLIP-0002 proposal). Thanks to it even multiple lists for a single language may coexist. For example, the current English list and hopefully a newer one, fulfilling new requirements,</p>
+* <p>one should use it as an advantage - the more words shared across the lists, the easier to create them. Also, the number of commonly shared words should not be limited - the more the better.</p>
