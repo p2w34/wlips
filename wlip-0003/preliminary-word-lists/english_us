@@ -5,6 +5,7 @@
 # group: astronomy
 # group: birds
 # group: body parts
+# group: books and things to read
 # group: business
 # group: celebrations
 # group: chemistry
@@ -262,9 +263,54 @@ wedding
 wish
 vow
 
+# group: books and things to read
+acknowledgments
+advertisement
+almanac
+appendix
+bibliography
+book
+booklet
+brochure
+cartoon
+chapter
+circulation
+column
+comics
+contents
+copyright
+correspondent
+cover
+dedication
+dictionary
+edition
+editor
+encyclopedia
+feature
+hardcover
+headline
+indention
+index
+interview
+leaflet
+magazine
+newspaper
+newsstand
+note
+novel
+page
+paragraph
+periodical
+preface
+report
+section
+story
+text
+textbook
+title
+
 # group: business
 advantage
-advertisement
 advice
 agenda
 apology
@@ -328,7 +374,6 @@ purchase
 reduction
 reminder
 repairs
-report
 responsibility
 result
 retailer
@@ -546,7 +591,6 @@ desktop
 digital
 disk
 document
-editor
 encryption
 file
 folder
@@ -571,7 +615,6 @@ node
 offline
 online
 output
-page
 password
 path
 platform
@@ -590,7 +633,6 @@ source
 syntax
 system
 template
-text
 thread
 user
 wallpaper
@@ -1048,7 +1090,6 @@ actor
 ad
 animation
 camera
-cartoon
 cast
 character
 cinema
@@ -1066,7 +1107,6 @@ plot
 role
 scene
 screen
-story
 trailer
 
 # group: music
@@ -1087,7 +1127,6 @@ lyrics
 melody
 microphone
 music
-note
 opera
 orchestra
 player
@@ -1185,13 +1224,10 @@ answer
 arithmetic
 atlas
 blackboard
-book
 calculator
 chalk
 compass
 desk
-dictionary
-encyclopedia
 eraser
 exam
 experiment
