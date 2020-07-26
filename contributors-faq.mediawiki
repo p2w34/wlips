@@ -1,20 +1,20 @@
 <pre>
-Currently this repository is still in it's infancy.
+Currently, this repository is still in its infancy.
 Contributors are asked to focus on extending [[wlip-0003/preliminary-word-lists/english_us|preliminary word list]].
 Please see more info below under "How can I contribute" question.
 </pre>
 
 ==How can I contribute?==
-Currently this repository is still in it's infancy.
+Currently, this repository is still in its infancy.
 Contributors are asked to focus on extending [[wlip-0003/preliminary-word-lists/english_us|preliminary word list]].
 Let's first add ~5k words (they should be manually chosen):
 * length does not matter here - a word might be too long for English list, but it might be appropriate for other lists,
-* common nouns and adjectives known to everyone; they should come from some kind of widely accepted source (well known dictionaries)
+* common nouns and adjectives known to everyone; they should come from some kind of widely accepted source (well-known dictionaries)
 * it does not matter that some words might be less known in some of the countries (for example animals or fruits),
-* avoid words from groups like: religion, i.e. words which might lead to some unnecessary discussions
+* avoid words from groups like religion, i.e. words which might lead to some unnecessary discussions
 * <p> it is OK if some people especially children would not understand some of them,
-but it should not 'put in trouble' (no embarrassing words) people who know the meaning and are asked for explanation.
-This is a vague definition but there really is no point to try to better define such words.
+but it should not 'put in trouble' (no embarrassing words) people who know the meaning and are asked for an explanation.
+This is a vague definition but there is no point to try to better define such words.
 When in doubt, please simply come up with another word. </p>
 * <p>hopefully grouping them by category will help; let's keep order (may be simply alphabetical) within each such group;
 feel free to add more groups.</p>
@@ -29,3 +29,24 @@ Again, this repo is still in its infancy. The work should progress as follows:
 ** create a draft of the word list by extracting words fulfilling requirements; this can be automated using the script:
   `python3 scripts/create_word_list.py -l translated_preliminary_word_list`
 ** manually polish the list
+
+==When can I expect language_x to be added?==
+After the creation of [[wlip-0003/preliminary-word-lists/english_us|preliminary word list]] things should speed up.
+However, the work on wlips is not meant to be done any under time pressure.
+The lists should be released within reasonable periods.
+However, as a prerequisite, at least a couple of them should be created to prove the approach is correct.
+The work might need to be paused, some conclusions drawn and the approach readjusted.
+They should be though rather of minor importance.
+
+==Why it is allowed for the lists to share common words?==
+Some people believe that it would allow recognizing a list using just one random word.
+However, it would cause more problems than benefits.
+Why? It is because:
+* which words will be most likely duplicated? the ones which are the most common and
+* with each new list, the task of choosing words will be harder and harder,
+* <p>one should not recognize lists not by a single word, but by an industry-standard solution:
+using hashes (it is part of WLIP-0002 proposal).
+Thanks to it even multiple lists for a single language may coexist.
+For example, the current English list and hopefully a newer one, fulfilling new requirements,
++ one should use it as an advantage - the more words shared across the lists, the easier to create them.
+Also, the number of commonly shared words should not be limited - the more the better.
