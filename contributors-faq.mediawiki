@@ -1,6 +1,6 @@
 <pre>
 Currently, this repository is still in its infancy.
-Contributors are asked to focus on extending [[wlip-0003/preliminary-word-lists/english_us|preliminary word list]].
+Contributors are asked to focus on extending preliminary_word_list.
 Please see more info below under "How can I contribute" question.
 </pre>
 
