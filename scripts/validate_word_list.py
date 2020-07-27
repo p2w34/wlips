@@ -9,7 +9,7 @@ BASE_CHARACTER_SETS_PATH = "../wlip-0001/base-character-sets/"
 
 parser = argparse.ArgumentParser(
     description="Validate word list",
-    epilog="Example: python3 scripts/validate_word_list.py -f wlip-0003/english-770d1896-obsolete")
+    epilog="Example: python3 scripts/validate_word_list.py -f wlip-0003/english-a1d03317-obsolete")
 parser.add_argument('-f', '--file', required=True)
 
 args = parser.parse_args()
