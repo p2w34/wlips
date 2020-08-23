@@ -5,21 +5,13 @@ Please see more info below under "How can I contribute" question.
 </pre>
 
 ==How can I contribute?==
-Currently, this repository is still in its infancy.
-Contributors are asked to focus on extending [[wlip-0003/preliminary-word-lists/english_us|preliminary word list]].
-Let's first add ~5k words (they should be manually chosen):
-* length does not matter here - a word might be too long for English list, but it might be appropriate for other lists,
-* common nouns and adjectives known to everyone; they should come from some kind of widely accepted source (well-known dictionaries)
-* it does not matter that some words might be less known in some of the countries (for example animals or fruits),
-* avoid words from groups like religion, i.e. words which might lead to some unnecessary discussions,
-* <p>it is OK if some people especially children would not understand some of them, but it should not 'put in trouble' (no embarrassing words) people who know the meaning and are asked for an explanation. This is a vague definition but there is no point to try to better define such words. When in doubt, please simply come up with another word.</p>
-* <p>hopefully grouping them by category will help; let's keep order (may be simply alphabetical) within each such group; feel free to add more groups.</p>
-
-Preliminary word list creation is a prerequisite to start work on the word lists.
+Currently, this repository is still in its infancy. One can distinguish:
+1) for languages based on the Latin alphabet: the work focuses now on creating preliminary_word_list which can be translated to all languages and then trimmed to the word lists in their final forms, with the use of the scripts this repo offers.
+2) for other languages - the work has not even started - the help of natives is needed!
 
 ==Is there any roadmap? How can I add a word list for a new language?==
 Again, this repo is still in its infancy. The work should progress as follows:
-* finishing [[wlip-0003/preliminary-word-lists/english_us|preliminary word list]]
+* finishing creation of the preliminary_word_list
 * for each language:
 ** translate preliminary_word_list
 ** create a draft of the word list by extracting words fulfilling requirements; this can be automated using the script:
