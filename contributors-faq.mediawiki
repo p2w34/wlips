@@ -5,9 +5,7 @@ Please see more info below under "How can I contribute" question.
 </pre>
 
 ==How can I contribute?==
-Currently, this repository is still in its infancy. One can distinguish:  
-* for languages based on the Latin alphabet: the work focuses now on creating ''preliminary_word_list'' which can be translated to all languages and then trimmed to the word lists in their final forms, with the use of the scripts this repo offers.  
-* for other languages - the work has not even started - the help of natives is needed!
+Currently, this repository is still in its infancy. Until this repo gets enough traction, one should focus on languages based on the Latin alphabet. The prerequisite is to create ''preliminary_word_list'' which can be translated to all languages and then trimmed to the word lists in their final forms, with the use of the scripts this repo offers.
 
 ==Is there any roadmap? How can I add a word list for a new language?==
 Again, this repo is still in its infancy. The work should progress as follows:
