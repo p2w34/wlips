@@ -3,6 +3,7 @@
 # groups:
 # group: animals
 # group: animals (birds)
+# group: animals (body parts)
 # group: astronomy
 # group: body parts
 # group: books and things to read
@@ -263,6 +264,9 @@ thermometer
 universe
 vacuum
 zodiac
+
+# group animals (body parts)
+todo
 
 # group: body parts
 abdomen

@@ -3,6 +3,7 @@
 # groups:
 # group: zwierzęta
 # group: zwierzęta (ptaki)
+# group: zwierzęta (części ciała)
 # group: astronomia
 # group: części ciała
 
@@ -184,6 +185,9 @@ tukan
 indyk
 sęp
 dzięcioł
+
+# group: zwierzęta (części ciała)
+todo
 
 # group: astronomia
 asteroida
