@@ -3,6 +3,8 @@
 # groups:
 # group: zwierzęta
 # group: zwierzęta (ptaki)
+# group: astronomia
+# group: części ciała
 
 # group: zwierzęta
 aligator
@@ -229,3 +231,76 @@ termometr
 wszechświat
 próżnia
 zodiak
+
+# group: części ciała
+brzuch
+kostka
+ramię
+pacha
+plecy
+broda
+pęcherz
+krew
+ciało
+kość
+mózg
+policzek
+klatka
+podbródek
+obojczyk
+ucho
+łokieć
+oko
+brew
+rzęsa
+powieka
+twarz
+palec
+stopa
+przedramię
+czoło
+włosy
+ręka
+głowa
+serce
+biodro
+jelito
+tęczówka
+szczęka
+nerka
+kolano
+krtań
+noga
+warga
+wątroba
+płuco
+wąsy
+usta
+mięsień
+paznokieć
+pępek
+szyja
+nos
+dłoń
+trzustka
+miednica
+źrenica
+żebro
+łopatka
+ramię
+skóra
+czaszka
+kręgosłup
+śledziona
+żołądek
+skroń
+udo
+gardło
+kciuk
+palec
+język
+migdałek
+ząb
+żyła
+talia
+nadgarstek
